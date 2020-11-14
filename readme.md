@@ -26,4 +26,4 @@ jar file for the [Java Romset generator](https://github.com/teiram/dandanator-mi
 ## :small_blue_diamond:License
  LICENSE: CC BY NC SA 4.0
  https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es_ES
- ![cc](cclogo.png | width=200)
+ ![cc](cclogo.png | width = 200)
