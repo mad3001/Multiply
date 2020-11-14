@@ -1,10 +1,10 @@
-# Multiply. The definitive addon for Dandanator ZX Mini
+# Multiply. An microSD card addon for Dandanator ZX Mini
 Addon for [Dandanator Mini](http://www.dandare.es/Proyectos_Dandare/ZX_Dandanator!_Mini.html). A Spectrum ZX peripheral with many features.
 
 
 ## Requirements
 Arduino IDE, Sjasmplus or similar Z80 compiler
-jar file for the [Java Romset generator] (https://github.com/teiram/dandanator-mini.git)
+jar file for the [Java Romset generator](https://github.com/teiram/dandanator-mini.git)
 
 
 ## Cloning the repository
