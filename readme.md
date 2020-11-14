@@ -1,4 +1,4 @@
-# Multiply. An microSD card addon for Dandanator ZX Mini
+# Multiply. A microSD card addon for Dandanator ZX Mini
 Addon for [ZX Dandanator! Mini](http://www.dandare.es/Proyectos_Dandare/ZX_Dandanator!_Mini.html). A Spectrum ZX peripheral with many features.
 
 [Youtube Video Link](https://www.youtube.com/watch?v=IbOcqb44hSs)
