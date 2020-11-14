@@ -1,7 +1,9 @@
-# Multiply. A microSD card addon for Dandanator ZX Mini
+# Multiply. A microSD card addon for ZX Dandanator! Mini
 Addon for [ZX Dandanator! Mini](http://www.dandare.es/Proyectos_Dandare/ZX_Dandanator!_Mini.html). A Spectrum ZX peripheral with many features.
 
 [Youtube Video Link](https://www.youtube.com/watch?v=IbOcqb44hSs)
+
+Multiply is a team work by Dandare, Mad3001 and OverCLK, with the invaluable help of Habi (habisoft) for his [great ZX Emulator es.pectrum](http://www.habisoft.com/espectrum/) and Pagantipaco for the Menu designs [Link to Retroworks page](http://www.retroworks.es/index.php)
 
 ## :small_blue_diamond:Requirements
 Arduino IDE, Sjasmplus or similar Z80 compiler
