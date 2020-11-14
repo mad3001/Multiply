@@ -3,7 +3,7 @@ Addon for [ZX Dandanator! Mini](http://www.dandare.es/Proyectos_Dandare/ZX_Danda
 
 [Youtube Video Link](https://www.youtube.com/watch?v=IbOcqb44hSs)
 
-Multiply is a team work by Dandare, Mad3001 and OverCLK, with the invaluable help of Habi (habisoft) for his [great ZX Emulator es.pectrum](http://www.habisoft.com/espectrum/) and Pagantipaco for the Menu designs [Link to Retroworks page](http://www.retroworks.es/index.php)
+Multiply is a team work by Dandare, Mad3001 and OverCLK, with the invaluable help of Habi (habisoft) for his [great ZX Emulator es.pectrum](http://www.habisoft.com/espectrum/) and Pagantipaco for the Menu design. [Link to Retroworks page](http://www.retroworks.es/index.php)
 
 ## :small_blue_diamond:Requirements
 Arduino IDE, Sjasmplus or similar Z80 compiler
@@ -26,4 +26,4 @@ jar file for the [Java Romset generator](https://github.com/teiram/dandanator-mi
 ## :small_blue_diamond:License
  LICENSE: CC BY NC SA 4.0
  https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es_ES
- ![cc](cclogo.png)
+ ![cc](cclogo.png | width=200)
