@@ -7,6 +7,7 @@ Multiply is a team work by Dandare, Mad3001 and OverCLK, with the invaluable hel
 
 ## :small_blue_diamond:Requirements
 Arduino IDE, Sjasmplus or similar Z80 compiler
+
 jar file for the [Java Romset generator](https://github.com/teiram/dandanator-mini.git)
 
 
@@ -16,14 +17,17 @@ jar file for the [Java Romset generator](https://github.com/teiram/dandanator-mi
  
 ## :small_blue_diamond:Building
  1.Use the Arduino IDE to upload the sketch to the Multiply's Arduino Nano. This process requires the Multiply to be disconnected from the ZX Dandanator! Mini
+ 
  2.Use SJASMPlus to create the MLD file containing the navigation menu
 
  
 ## :small_blue_diamond:Executing
  1.Open the "Java Romset generator" and drag your newly built MLD file to the program list
+ 
  2.Connect the Multiply to the ZX Dandanator! Mini and, then, plug the cartridge to the expansion slot of your Spectrum. Once powered on, select "L-Loader" in the Spectrum's Dandanator menu and send your romset using the "Java Romset generator"
  
 ## :small_blue_diamond:License
  LICENSE: CC BY NC SA 4.0
+ 
  https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es_ES
- ![cc](cclogo.png | width = 200)
+ ![cc](cclogo.png)
