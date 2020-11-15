@@ -34,7 +34,7 @@ If you are using any part of the code in this repository don''t forget to mentio
  
  https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es_ES
  
- ![cc](cclogo.png)
+ ![cc](cc_logo.png)
  
 ## :small_blue_diamond:Acknowledgedments
  
