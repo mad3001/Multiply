@@ -3,8 +3,6 @@ Addon for [ZX Dandanator! Mini](http://www.dandare.es/Proyectos_Dandare/ZX_Danda
 
 [Youtube Video Link](https://www.youtube.com/watch?v=IbOcqb44hSs)
 
-Multiply is a team work by Dandare, Mad3001 and OverCLK, with the invaluable help of Habi (habisoft) for his [great ZX Emulator es.pectrum](http://www.habisoft.com/espectrum/) and Pagantipaco for the Menu design. [Link to Retroworks page](http://www.retroworks.es/index.php)
-
 ## :small_blue_diamond:Requirements
 Arduino IDE, Sjasmplus or similar Z80 compiler
 
@@ -27,6 +25,11 @@ jar file for the [Java Romset generator](https://github.com/teiram/dandanator-mi
  2.Connect the Multiply to the ZX Dandanator! Mini and, then, plug the cartridge to the expansion slot of your Spectrum. Once powered on, select "L-Loader" in the Spectrum's Dandanator menu and send your romset using the "Java Romset generator"
  
 ## :small_blue_diamond:License
+
+Multiply is a team work by Dandare, Mad3001 and OverCLK
+
+If part of full use of the code in this repository is used, always mention it.
+
  LICENSE: CC BY NC SA 4.0
  
  https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es_ES
@@ -34,4 +37,9 @@ jar file for the [Java Romset generator](https://github.com/teiram/dandanator-mi
  ![cc](cclogo.png)
  
 ## :small_blue_diamond:Acknowledgedments
+ 
+ The invaluable help of Habi (habisoft) for his [great ZX Emulator es.pectrum](http://www.habisoft.com/espectrum/)
+
+ The spectacular graphics from Pagantipaco and his amazing Menu design. [Link to Retroworks page](http://www.retroworks.es/index.php)
+
 Thanks to Antonio Villena for his slight modification to the original 48KB Spectrum rom allowing a tape auto load on boot
