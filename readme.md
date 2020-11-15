@@ -33,5 +33,5 @@ jar file for the [Java Romset generator](https://github.com/teiram/dandanator-mi
  
  ![cc](cclogo.png)
  
-## :small_blue_diamond:“acknowledgedments”
- Antonio Villena, for the small modifies to 48k Spectrum ROM for auto-load version (used for TAP loading) 
+## :small_blue_diamond:Acknowledgedments
+Thanks to Antonio Villena for his swift modification to the original 48KB Spectrum rom allowing a tape auto load on boot
