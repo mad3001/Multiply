@@ -26,9 +26,9 @@ jar file for the [Java Romset generator](https://github.com/teiram/dandanator-mi
  
 ## :small_blue_diamond:License
 
-Multiply is a team work by Dandare, Mad3001 and OverCLK
+Multiply is a team work by Dandare, Mad3001 and OverCLK.
 
-If part of full use of the code in this repository is used, always mention it.
+If you are using any part of the code in this repository don''t forget to mention it if you make it public.
 
  LICENSE: CC BY NC SA 4.0
  
@@ -38,8 +38,8 @@ If part of full use of the code in this repository is used, always mention it.
  
 ## :small_blue_diamond:Acknowledgedments
  
- The invaluable help of Habi (habisoft) for his [great ZX Emulator es.pectrum](http://www.habisoft.com/espectrum/)
+ Our sincere gratitude to Habi (Habisoft) for his invaluable support and his great emulator [es.pectrum](http://www.habisoft.com/espectrum/)
 
- The spectacular graphics from Pagantipaco and his amazing Menu design. [Link to Retroworks page](http://www.retroworks.es/index.php)
+ Many thanks To Pagantipaco for the graphics and his amazing Menu design. [Link to Retroworks page](http://www.retroworks.es/index.php)
 
-Thanks to Antonio Villena for his slight modification to the original 48KB Spectrum rom allowing a tape auto load on boot
+ Thanks to Antonio Villena for his modification to the original 48KB Spectrum rom allowing a tape auto load on boot
