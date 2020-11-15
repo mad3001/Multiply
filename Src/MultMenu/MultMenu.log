@@ -1,4 +1,4 @@
-0001   0000             	;	DEFINE debug			;debug mode for use with es.pectrum (until Habi changes extension Problem)
+0001   0000             	;	DEFINE debug			;debug mode 
 0002   0000             	;DEFINE SPACE_IS_ROOT		;Uncomment for SPACE/FIRE2 execute going to ROOT directly. Comment for SPACE/FIRE2 execute going to ".." if current selection is not ".." or Parent Dir is current is ".."
 0003   0000             			output "MultMenu.MLD"
 0004   0000             			org	#0000
