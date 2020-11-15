@@ -41,7 +41,7 @@ Goto_PostROOT:
 			XOR		A
 			LD		(PathBuffer),A					;Root is Empty Directory (64 bytes with 0x00)
 			LD		(PathIndexLast),A				;0=No subdir, we're in ROOT "/"
-			LD		(SubMenuOpt),A					;0=Main Menu, 1=Submenu ROMSET Writer, MARIO PENDIENTE SUBMENUS ADICIONALES
+			LD		(SubMenuOpt),A					;0=Main Menu, 1=Submenu ROMSET Writer, etc further additional submenus
 
 			JR		Continue
 		
@@ -278,7 +278,7 @@ Printing:
 			INC		A
 			LD		(AuxCurRow),A
 			DEC		A
-			LD		(MaxRow),A						;Update maximum row for selecting	- MARIO PENDIENTE HACER MEJOR CUANDO HAYAN VARIAS PAGINAS DE FICHEROS
+			LD		(MaxRow),A						;Update maximum row for selecting
 			CP		MaxRowFiles						;Avoid going beyond MaxRowFiles (max.row to be used by filenames)
 			JR		NZ,Printing
 					
@@ -350,7 +350,7 @@ MenuWaitChange:
 			LD		A,(SubMenuOpt)					;SubMenu selected. 1=ROMSET_SubMenu.... no more yet
 			DEC		A
 			JP		Z,ROMSET_SubMenu				;Jump for submenu 1
-		; MARIO PENDIENTE SUBMENUS ADICIONALES
+		; Here further additional submenus
 		
 		;Here for no submenu option
 			LD		A,(KeyToExe)					;Key pressed for execute something
@@ -665,7 +665,7 @@ ProcessFIRE:
 			DEC A
 			JR NZ,ROMSET_pre			;No 1st row is because we selected a file of type ROMSET in 2nd or later-on page
 
-		;Here for internal ROMSET . MARIO PENDIENTE CUANDO SE ELIGIÓ ROMSET EN UNA PAGINA QUE NO ES LA 1...(eso indica que no es el internal romset)
+		;Here for internal ROMSET 
 Goto_Dan1stSlot:			
 			LD HL,RAMTOINTERNAL
 			LD DE,ScratchRAM
@@ -821,7 +821,7 @@ NextProcessFIRE:
 			CP		FT_TAP							;Check for type: TAP
 			JP		Z,Load_FT_TAP
 		
-		;MARIO PENDIENTE OTROS TIPOS QUE VAYAMOS INTRODUCIENDO A FUTURO....TZX...BIN...
+		;Here further additional File Types 
 		
 		
 		
@@ -855,7 +855,7 @@ Charset8x4:
 		include "resources/charset8x4.asm"
 Charset8x4END:
 
-;;;;;;;;; MARIO PENDIENTE AL FINAL AJUSTAR ESTA RUTINA PARA QUE EL "HUECO" ENTRE LA ANTERIOR Y LA DE IM2 SEA LO MENOR POSIBLE
+;When compiling, adjust the "hole" between preious and IM2_routines tyring to get the slower size
 IMB:
 		include "resources/IM2_routines.asm"		;IM2 routines used with "checkhardware.asm"
 IME:

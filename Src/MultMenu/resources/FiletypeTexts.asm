@@ -155,7 +155,7 @@ FT_TAP_Program2:
 
 FT_BINARY_text:
 	defb	"BINARY FILE",0
-	defb	"Size: xxxxx bytes",0	;Pendiente xxxxx cambiarlo por su tamaño
+	defb	"Size: xxxxx bytes",0	;xxxxx size
 	defb	" ",0
 	defb	" ",0
 	defb	" ENTER or FIRE to pending",0

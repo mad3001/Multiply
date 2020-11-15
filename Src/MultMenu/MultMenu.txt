@@ -47,5 +47,5 @@ Pass 2 complete (0 errors)
 > FREE AREA #3000-Footer: 0x025D, 605
 > vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 Pass 3 complete
-Errors: 0, warnings: 0, compiled: 6729 lines, work time: 0.031 seconds
+Errors: 0, warnings: 0, compiled: 6726 lines, work time: 0.031 seconds
 COMPILADO MultMenu.asm y generado MultMenu.log

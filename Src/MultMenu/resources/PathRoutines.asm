@@ -34,7 +34,7 @@ UpdatePath_Pos0:
 			JR		NZ,UpdatePath_NewGE60
 		;If CurrentPath is Root (no path) then check against MaxLenPath
 			LD		A,C
-			CP		MaxLenPath						;MARIO TENIA CP MaxLenPath+1
+			CP		MaxLenPath
 			JR		C,UpdatePath_NewLess60
 		;Here if NewPath is greater or equal to MaxLenPath
 
@@ -46,11 +46,11 @@ UpdatePath_NewGE60:
 			LD		(PathBuffer),A
 			LD		A,MaxLenPath					;A=Len of Name
 			LD		(LenPath),A						;Update new Len
-			LD		BC,MaxLenPath					;Coping 1 less of len (so don't overwrite "~") MARIO TENIA LD BC,MaxLenPath
+			LD		BC,MaxLenPath					;Coping 1 less of len (so don't overwrite "~") 
 UpdatePath_NoMaxLen:
 			LD		DE,PathBuffer+MaxLenPath		;DE=Last position of PathBuffer (just in 0x00 after path)
 			LDDR									;Copy the path to show
-			JR		EndUpdatePath					;MARIO quizas luego esto sea un simple RET....REVISAR
+			JR		EndUpdatePath
 
 		;Here for NewDir is less than 59
 UpdatePath_NewLess60:
@@ -85,7 +85,7 @@ AfterCopy:
 
 			ADD		A,C								;Calculate new length
 			LD		C,A
-			CP		MaxLenPath-1					;Check if new length is > MaxLenPath (aka >= 60 char)	MARIO ERA Maxlenpath+1
+			CP		MaxLenPath-1					;Check if new length is > MaxLenPath (aka >= 60 char)
 
 			LD		HL,BuffGetDir+255				;For the chance A>=60 jump to copy last chars and adding "~" or "~/" as pen C
 			JR		NC,UpdatePath_NewGE60			;NC if A>=60    C if A<60

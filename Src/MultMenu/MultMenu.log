@@ -83,7 +83,7 @@
 0076+  0000             PrevROMTime	equ		PrevROMxPag+1					;(1 byte) Counter of time for changing page in ROMSET preview
 0077+  0000             Rom2Write	equ		PrevROMTime+1					;(2 bytes) Address of ROMSET info for writing
 0078+  0000             ;Variables for MENU SubMenus
-0079+  0000             SubMenuOpt	equ		Rom2Write+2						;(1 byte) 0=Main Menu, 1=ROMSET ENTER submenu, MARIO PENDIENTE SUBMENUS ADICIONALES
+0079+  0000             SubMenuOpt	equ		Rom2Write+2						;(1 byte) 0=Main Menu, 1=ROMSET ENTER submenu, etc...Further additional submenus
 0080+  0000             
 0081+  0000             
 0082+  0000             
@@ -394,7 +394,7 @@
 0041   002A AF          			XOR		A
 0042   002B 32 08 DB    			LD		(PathBuffer),A					;Root is Empty Directory (64 bytes with 0x00)
 0043   002E 32 06 DD    			LD		(PathIndexLast),A				;0=No subdir, we're in ROOT "/"
-0044   0031 32 3B DD    			LD		(SubMenuOpt),A					;0=Main Menu, 1=Submenu ROMSET Writer, MARIO PENDIENTE SUBMENUS ADICIONALES
+0044   0031 32 3B DD    			LD		(SubMenuOpt),A					;0=Main Menu, 1=Submenu ROMSET Writer, etc further additional submenus
 0045   0034             
 0046   0034 18 41       			JR		Continue
 0047   0036             		
@@ -633,7 +633,7 @@
 0278   01D0 3C          			INC		A
 0279   01D1 32 46 9C    			LD		(AuxCurRow),A
 0280   01D4 3D          			DEC		A
-0281   01D5 32 45 9C    			LD		(MaxRow),A						;Update maximum row for selecting	- MARIO PENDIENTE HACER MEJOR CUANDO HAYAN VARIAS PAGINAS DE FICHEROS
+0281   01D5 32 45 9C    			LD		(MaxRow),A						;Update maximum row for selecting
 0282   01D8 FE 17       			CP		MaxRowFiles						;Avoid going beyond MaxRowFiles (max.row to be used by filenames)
 0283   01DA 20 C2       			JR		NZ,Printing
 0284   01DC             					
@@ -706,7 +706,7 @@
 0350   0240 3A 3B DD    			LD		A,(SubMenuOpt)					;SubMenu selected. 1=ROMSET_SubMenu.... no more yet
 0351   0243 3D          			DEC		A
 0352   0244 CA 8E 04    			JP		Z,ROMSET_SubMenu				;Jump for submenu 1
-0353   0247             		; MARIO PENDIENTE SUBMENUS ADICIONALES
+0353   0247             		; Here further additional submenus
 0354   0247             		
 0355   0247             		;Here for no submenu option
 0356   0247 3A 40 9C    			LD		A,(KeyToExe)					;Key pressed for execute something
@@ -1023,7 +1023,7 @@
 0665   0421 3D          			DEC A
 0666   0422 20 1F       			JR NZ,ROMSET_pre			;No 1st row is because we selected a file of type ROMSET in 2nd or later-on page
 0667   0424             
-0668   0424             		;Here for internal ROMSET . MARIO PENDIENTE CUANDO SE ELIGIÓ ROMSET EN UNA PAGINA QUE NO ES LA 1...(eso indica que no es el internal romset)
+0668   0424             		;Here for internal ROMSET 
 0669   0424             Goto_Dan1stSlot: 			
 0670   0424 21 31 04    			LD HL,RAMTOINTERNAL
 0671   0427 11 00 80    			LD DE,ScratchRAM
@@ -1190,7 +1190,7 @@
 0821   04FE FE 20       			CP		FT_TAP							;Check for type: TAP
 0822   0500 CA B7 19    			JP		Z,Load_FT_TAP
 0823   0503             		
-0824   0503             		;MARIO PENDIENTE OTROS TIPOS QUE VAYAMOS INTRODUCIENDO A FUTURO....TZX...BIN...
+0824   0503             		;Here further additional File Types 
 0825   0503             		
 0826   0503             		
 0827   0503             		
@@ -2117,27 +2117,24 @@
 0096+  096C D3 FE       			OUT		(#FE),A
 0097+  096E             
 0098+  096E CD 74 09    			CALL	Swap_Screen
-0099+  0971             		;	LDIR									;Restore screen
-0100+  0971             		;	EI
-0101+  0971             
-0102+  0971             		;FIN LUEGO QUITAR MARIO
-0103+  0971 C3 2F 02    			JP		MenuWaitChange					;Contine where we were
-0104+  0974             			
-0105+  0974             Swap_Screen: 
-0106+  0974 21 00 C0    			LD		HL,ScreensSCR
-0107+  0977 11 00 40    			LD		DE,#4000
-0108+  097A 01 00 1B    			LD		BC,#1B00
-0109+  097D             Swapping: 
-0110+  097D 1A          			LD		A,(DE)
-0111+  097E ED A0       			LDI
-0112+  0980 2B          			DEC		HL
-0113+  0981 77          			LD		(HL),A
-0114+  0982 23          			INC		HL
-0115+  0983 78          			LD		A,B
-0116+  0984 B1          			OR		C
-0117+  0985 20 F6       			JR		NZ,Swapping
-0118+  0987 C9          			RET	
-0119+  0988             			
+0099+  0971             
+0100+  0971 C3 2F 02    			JP		MenuWaitChange					;Contine where we were
+0101+  0974             			
+0102+  0974             Swap_Screen: 
+0103+  0974 21 00 C0    			LD		HL,ScreensSCR
+0104+  0977 11 00 40    			LD		DE,#4000
+0105+  097A 01 00 1B    			LD		BC,#1B00
+0106+  097D             Swapping: 
+0107+  097D 1A          			LD		A,(DE)
+0108+  097E ED A0       			LDI
+0109+  0980 2B          			DEC		HL
+0110+  0981 77          			LD		(HL),A
+0111+  0982 23          			INC		HL
+0112+  0983 78          			LD		A,B
+0113+  0984 B1          			OR		C
+0114+  0985 20 F6       			JR		NZ,Swapping
+0115+  0987 C9          			RET	
+0116+  0988             			
 0836   0988             LE: 
 0837   0988             showinfdzxB: 
 0838   0988             		include "resources/dzx7_turbo.asm"
@@ -2263,7 +2260,7 @@
 0034+  09FC 20 05       			JR		NZ,UpdatePath_NewGE60
 0035+  09FE             		;If CurrentPath is Root (no path) then check against MaxLenPath
 0036+  09FE 79          			LD		A,C
-0037+  09FF FE 3C       			CP		MaxLenPath						;MARIO TENIA CP MaxLenPath+1
+0037+  09FF FE 3C       			CP		MaxLenPath
 0038+  0A01 38 14       			JR		C,UpdatePath_NewLess60
 0039+  0A03             		;Here if NewPath is greater or equal to MaxLenPath
 0040+  0A03             
@@ -2275,11 +2272,11 @@
 0046+  0A05 32 08 DB    			LD		(PathBuffer),A
 0047+  0A08 3E 3C       			LD		A,MaxLenPath					;A=Len of Name
 0048+  0A0A 32 45 DB    			LD		(LenPath),A						;Update new Len
-0049+  0A0D 01 3C 00    			LD		BC,MaxLenPath					;Coping 1 less of len (so don't overwrite "~") MARIO TENIA LD BC,MaxLenPath
+0049+  0A0D 01 3C 00    			LD		BC,MaxLenPath					;Coping 1 less of len (so don't overwrite "~") 
 0050+  0A10             UpdatePath_NoMaxLen: 
 0051+  0A10 11 44 DB    			LD		DE,PathBuffer+MaxLenPath		;DE=Last position of PathBuffer (just in 0x00 after path)
 0052+  0A13 ED B8       			LDDR									;Copy the path to show
-0053+  0A15 18 37       			JR		EndUpdatePath					;MARIO quizas luego esto sea un simple RET....REVISAR
+0053+  0A15 18 37       			JR		EndUpdatePath
 0054+  0A17             
 0055+  0A17             		;Here for NewDir is less than 59
 0056+  0A17             UpdatePath_NewLess60: 
@@ -2314,7 +2311,7 @@
 0085+  0A36             
 0086+  0A36 81          			ADD		A,C								;Calculate new length
 0087+  0A37 4F          			LD		C,A
-0088+  0A38 FE 3B       			CP		MaxLenPath-1					;Check if new length is > MaxLenPath (aka >= 60 char)	MARIO ERA Maxlenpath+1
+0088+  0A38 FE 3B       			CP		MaxLenPath-1					;Check if new length is > MaxLenPath (aka >= 60 char)
 0089+  0A3A             
 0090+  0A3A 21 45 DC    			LD		HL,BuffGetDir+255				;For the chance A>=60 jump to copy last chars and adding "~" or "~/" as pen C
 0091+  0A3D 30 C4       			JR		NC,UpdatePath_NewGE60			;NC if A>=60    C if A<60
@@ -3021,7 +3018,7 @@
 0118+  1065             
 0856   1065             Charset8x4END: 
 0857   1065             
-0858   1065             ;;;;;;;;; MARIO PENDIENTE AL FINAL AJUSTAR ESTA RUTINA PARA QUE EL "HUECO" ENTRE LA ANTERIOR Y LA DE IM2 SEA LO MENOR POSIBLE
+0858   1065             ;When compiling, adjust the "hole" between preious and IM2_routines tyring to get the slower size
 0859   1065             IMB: 
 0860   1065             		include "resources/IM2_routines.asm"		;IM2 routines used with "checkhardware.asm"
 0001+  1065             ;IM2 routines - Compatible with Inves +
@@ -3571,14 +3568,14 @@
 0429+  14DA             			
 0430+  14DA 3A 47 9C    			LD		A,(CurRow)
 0431+  14DD FE 01       			CP		MinRowFiles
-0432+  14DF C8          			RET		Z								;Return if selected is "Internal Romset"-> MARIO PENDIENTE AUN SIN PREVIEW
+0432+  14DF C8          			RET		Z								;Return if selected is "Internal Romset"
 0433+  14E0             
 0434+  14E0             NoInternalROMSET: 
 0435+  14E0 3A 3C 9C    			LD		A,(BufGetInfo+9)				;Num of games (0..25)
 0436+  14E3 A7          			AND		A
 0437+  14E4 C8          			RET		Z								;No games, no preview
 0438+  14E5             			
-0439+  14E5             		;Here for external romset...Get data for preview -> MARIO PENDIENTE PONER DATOS EN "MINISCREEN" Y CAMBIAR ATTRIBUTES PARA QUE SE VEA (no usa PREVIEW)
+0439+  14E5             		;Here for external romset...Get data for preview
 0440+  14E5 FE 1A       			CP		MAXGAMES+1						;Check for no valid (great than max number of games in romsets)
 0441+  14E7 D0          			RET		NC								;Return if num of games >25
 0442+  14E8             		;Now calculate how much bytes to get (all the games at once time)
@@ -3703,13 +3700,13 @@
 0561+  15A1 D5 DD E5    			PUSH	DE,IX
 0562+  15A4 CD CC 16    			CALL	PrintIXText
 0563+  15A7 DD E1       			POP		IX
-0564+  15A9 11 24 00    			LD		DE,36							;MARIO cambiar a su etiqueta correcta
+0564+  15A9 11 24 00    			LD		DE,36
 0565+  15AC DD 19       			ADD		IX,DE
 0566+  15AE D1          			POP		DE
 0567+  15AF 14          			INC		D								;Next Row
 0568+  15B0 7A          			LD		A,D
 0569+  15B1 FE 14       			CP		10+(2+PreviewRow)				;Maximun 10 Files per page
-0570+  15B3 C8          			RET		Z								;MARIO pendiente que hacer si hay más de 12 juegos
+0570+  15B3 C8          			RET		Z
 0571+  15B4             			
 0572+  15B4 18 E6       			JR		PrintGames_ROM_Loop
 0573+  15B6             
@@ -4823,7 +4820,7 @@
 0156+  1D6A             FT_BINARY_text: 
 0157+  1D6A             	defb	"BINARY FILE",0
 0157+  1D6A 42494E4152592046494C4500
-0158+  1D76             	defb	"Size: xxxxx bytes",0	;Pendiente xxxxx cambiarlo por su tamaño
+0158+  1D76             	defb	"Size: xxxxx bytes",0	;xxxxx size
 0158+  1D76 53697A653A20787878787820627974657300
 0159+  1D88 20 00       	defb	" ",0
 0160+  1D8A 20 00       	defb	" ",0

@@ -96,10 +96,7 @@ Load_FT_SCR_END:
 			OUT		(#FE),A
 
 			CALL	Swap_Screen
-		;	LDIR									;Restore screen
-		;	EI
 
-		;FIN LUEGO QUITAR MARIO
 			JP		MenuWaitChange					;Contine where we were
 			
 Swap_Screen:

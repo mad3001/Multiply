@@ -76,7 +76,7 @@ PrevROMxPag	equ		PrevROMPag+1					;(1 byte) Will hold max page for showing romse
 PrevROMTime	equ		PrevROMxPag+1					;(1 byte) Counter of time for changing page in ROMSET preview
 Rom2Write	equ		PrevROMTime+1					;(2 bytes) Address of ROMSET info for writing
 ;Variables for MENU SubMenus
-SubMenuOpt	equ		Rom2Write+2						;(1 byte) 0=Main Menu, 1=ROMSET ENTER submenu, MARIO PENDIENTE SUBMENUS ADICIONALES
+SubMenuOpt	equ		Rom2Write+2						;(1 byte) 0=Main Menu, 1=ROMSET ENTER submenu, etc...Further additional submenus
 
 
 

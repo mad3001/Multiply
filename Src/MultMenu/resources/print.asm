@@ -429,14 +429,14 @@ PrintGames:
 			
 			LD		A,(CurRow)
 			CP		MinRowFiles
-			RET		Z								;Return if selected is "Internal Romset"-> MARIO PENDIENTE AUN SIN PREVIEW
+			RET		Z								;Return if selected is "Internal Romset"
 
 NoInternalROMSET:
 			LD		A,(BufGetInfo+9)				;Num of games (0..25)
 			AND		A
 			RET		Z								;No games, no preview
 			
-		;Here for external romset...Get data for preview -> MARIO PENDIENTE PONER DATOS EN "MINISCREEN" Y CAMBIAR ATTRIBUTES PARA QUE SE VEA (no usa PREVIEW)
+		;Here for external romset...Get data for preview
 			CP		MAXGAMES+1						;Check for no valid (great than max number of games in romsets)
 			RET		NC								;Return if num of games >25
 		;Now calculate how much bytes to get (all the games at once time)
@@ -561,13 +561,13 @@ PrintGames_ROM_Loop:
 			PUSH	DE,IX
 			CALL	PrintIXText
 			POP		IX
-			LD		DE,36							;MARIO cambiar a su etiqueta correcta
+			LD		DE,36
 			ADD		IX,DE
 			POP		DE
 			INC		D								;Next Row
 			LD		A,D
 			CP		10+(2+PreviewRow)				;Maximun 10 Files per page
-			RET		Z								;MARIO pendiente que hacer si hay más de 12 juegos
+			RET		Z
 			
 			JR		PrintGames_ROM_Loop
 
