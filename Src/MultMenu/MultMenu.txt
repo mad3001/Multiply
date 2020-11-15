@@ -1,0 +1,51 @@
+SjASMPlus Z80 Cross-Assembler v1.07 RC7 (build 02-04-2008)
+Pass 1 complete (0 errors)
+Pass 2 complete (0 errors)
+> DanSnap_Val: 0x7F94, 32660
+> End of chunk routine : 0x7F94, 32660
+> ENDSNA-SNALEN should be more than 0x25:0x003D, 61
+> End_LaunchSAV - ENDRAMSECTOR > 0:0x0066, 102
+> Current Spare zone for IM2 : 0x008B, 139
+> IM2ADDR:0xFFF4, 65524
+> False IM2 table:0x1100, 4352
+> False IM2 table end:0x1201, 4609
+> ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> loadroutines.asm: 0x0098, 152
+> dzx7_turbo.asm: 0x0058, 88
+> PathRoutines.asm: 0x0070, 112
+> Water_Effect.asm: 0x00BE, 190
+> PreviewScreen.asm: 0x01F7, 503
+> charset8x4.asm: 0x0360, 864
+> IM2_routines.asm: 0x0211, 529
+> IM2_routines Begin: 0x1065
+> IM2_routines End: 0x1276
+> print.asm: 0x0499, 1177
+> OtherTexts.asm: 0x0165, 357
+> Sorting.asm: 0x00AB, 171
+> SDRoutines.asm: 0x0013, 19
+> checkhardware.asm: 0x0033, 51
+> launchTAP.asm: 0x007E, 126
+> setbuttons.asm: 0x0038, 56
+> dandanator_hw_90.asm: 0x0023, 35
+> FiletypeTexts.asm: 0x0316, 790
+> ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> FREE AREA #1000-2000: 0x025A, 602
+> ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> Espacio libre: 0x025A, 602
+> vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+> key_routines.asm: 0x0088, 136
+> Hardware_table.asm: 0x00F5, 245
+> Iconos.asm: 0x0142, 322
+> 4bits_load_relocatable.asm: 0x006F, 111
+> Multiply_eewriter.asm: 0x0738, 1848
+> clearrow.asm: 0x0042, 66
+> browse_dir.asm: 0x00F0, 240
+> ZXBasic.asm: 0x0025, 37
+> Menu.scr.zx7: 0x01CF, 463
+> DataTable: 0x0001, 1
+> vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+> FREE AREA #3000-Footer: 0x025D, 605
+> vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+Pass 3 complete
+Errors: 0, warnings: 0, compiled: 6729 lines, work time: 0.032 seconds
+COMPILADO MultMenu.asm y generado MultMenu.log

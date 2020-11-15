@@ -1,0 +1,318 @@
+﻿{
+  "$type": "RGAS.PlatformProviders.SpectrumSpriteSet, RGAS",
+  "_ImageList": {
+    "$type": "System.Collections.Generic.List`1[[RGAS.SpriteBase, RGAS]], mscorlib",
+    "$values": [
+      {
+        "$type": "RGAS.SpectrumSprite, RGAS",
+        "Align256": false,
+        "GenerateVerticalMirror": false,
+        "GenerateHorizontalMirror": false,
+        "pixels": {
+          "$type": "System.Byte[], mscorlib",
+          "$value": "CAgICAgICAgICAgICAgICAgIDw8PDwgICAgICAgICAgIDwgICAgPCAgICAgICAgICA8ICAgIDw8PDw8PDw8PCAgPCAgICAgICAgICAgIDwgIDwgICAgICAgICAgICA8ICA8ICAgICAgICAgICA8PCAgPCAgICAgICAgICAgIDwgIDwgICAgICAgICAgIDw8ICA8ICAgICAgICAgICAgPCAgPCAgICAgICAgICAgPDwgIDwgICAgICAgICAgPCA8ICA8ICAgICAgICAgPCA8PCAgPCAgICA8IDwgPCA8IDwgIDw8PDw8PDw8PDw8PDw8ICAgICAgICAgICAgICAgICAA="
+        },
+        "Width": 16,
+        "Height": 16,
+        "_guid": "e8722452-0dba-4ee4-8e70-6d029a5b0c89",
+        "_name": "folder16x16",
+        "MaskDataInline": false,
+        "UseInLevelDesigner": true
+      },
+      {
+        "$type": "RGAS.SpectrumSprite, RGAS",
+        "Align256": false,
+        "GenerateVerticalMirror": false,
+        "GenerateHorizontalMirror": false,
+        "pixels": {
+          "$type": "System.Byte[], mscorlib",
+          "$value": "CAgICAgICAgICAgICAgICAgPDw8PDw8PDw8PDw8PDwgIDwgICAgICAgICAgICA8ICA8IDwgPCAgICA8PCAgPCAgPCAgPCA8ICA8PDw8IDwgIDwgPCA8ICAgPDw8PCA8ICA8ICAgICAgICA8PCAgPCAgPCAgICAgICAgICAgIDwgIDwgICAgPCAgICAgPCA8ICA8ICAgPDw8ICAgPCAgPCAgPCAgPDw8PDwgICA8IDwgIDwgPDw8PDw8PCAgICA8ICA8IDw8PDw8PDw8PDwgPCAgPCAgICAgICAgICAgIDwgIDw8PDw8PDw8PDw8PDw8ICAgICAgICAgICAgICAgICAA="
+        },
+        "Width": 16,
+        "Height": 16,
+        "_guid": "484ce1cf-8094-45b4-97f7-4dc2de99ff7b",
+        "_name": "screen16x16",
+        "MaskDataInline": false,
+        "UseInLevelDesigner": true
+      },
+      {
+        "$type": "RGAS.SpectrumSprite, RGAS",
+        "Align256": false,
+        "GenerateVerticalMirror": false,
+        "GenerateHorizontalMirror": false,
+        "pixels": {
+          "$type": "System.Byte[], mscorlib",
+          "$value": "CAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPDw8ICAgIDw8PCAgICA8PDwgPDw8PDw8PDw8PCAgPCA8PCA8PDw8PDw8IDwgIDw8PCA8PDw8PDw8PDw8ICAgIDw8PDw8PDw8PDwgICAgPDw8IDw8PDw8PDw8PDwgIDwgPDw8PDw8PDw8PCA8ICA8PDwgPDw8PDw8PDw8PCAgICA8PDw8PDw8PDw8ICAgIDw8PDw8PDw8PDw8PDw8ICA8IDw8PDw8PDw8PDwgPCAgPDw8PDw8PDw8PDw8PDwgICAgPDw8PDw8PDw8PCAgICAgICAgICAgICAgICAgICAA="
+        },
+        "Width": 16,
+        "Height": 16,
+        "_guid": "6470f487-1981-42ce-af4d-5f1515b1ead2",
+        "_name": "snapshot16x16",
+        "MaskDataInline": false,
+        "UseInLevelDesigner": true
+      },
+      {
+        "$type": "RGAS.SpectrumSprite, RGAS",
+        "Align256": false,
+        "GenerateVerticalMirror": false,
+        "GenerateHorizontalMirror": false,
+        "pixels": {
+          "$type": "System.Byte[], mscorlib",
+          "$value": "CAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDw8PDw8PDw8PDw8PDw8ICA8PCAgPCAgICA8ICA8PCAgPCA8ICAgICAgICA8IDwgIDwgIDw8PDw8PDw8ICA8ICA8ICAgICAgICAgICAgPCAgPCA8PCAgPCA8IDw8IDwgIDwgPDwgPCA8ICA8PCA8ICA8ICAgICAgICAgICAgPCAgPCAgICAgICAgICAgIDwgIDw8PDw8PDw8PDw8PDw8ICAgICAgICAgICAgICAgICAA="
+        },
+        "Width": 16,
+        "Height": 16,
+        "_guid": "8dc1392e-b2c0-4c00-8297-f911b856f6cd",
+        "_name": "tap16x16",
+        "MaskDataInline": false,
+        "UseInLevelDesigner": true
+      },
+      {
+        "$type": "RGAS.SpectrumSprite, RGAS",
+        "Align256": false,
+        "GenerateVerticalMirror": false,
+        "GenerateHorizontalMirror": false,
+        "pixels": {
+          "$type": "System.Byte[], mscorlib",
+          "$value": "CAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8PCA8PDw8PDw8PCA8PCAgPDwgPDw8PDw8PDwgPDwgIDw8PCAgICAgICAgPDw8ICA8PDw8PDw8PDw8PDw8PCAgPDwgIDw8IDwgPCAgPDwgIDw8ICA8IDwgPDwgIDw8ICA8PDw8PDw8PDw8PDw8PCAgPCA8PDw8PDw8PDw8IDwgIDw8PDw8PDw8PDw8PDw8ICAgICAgICAgICAgICAgICAA="
+        },
+        "Width": 16,
+        "Height": 16,
+        "_guid": "ea454698-5456-440d-a033-ce90b67179c0",
+        "_name": "tzx16x16",
+        "MaskDataInline": false,
+        "UseInLevelDesigner": true
+      },
+      {
+        "$type": "RGAS.SpectrumSprite, RGAS",
+        "Align256": false,
+        "GenerateVerticalMirror": false,
+        "GenerateHorizontalMirror": false,
+        "pixels": {
+          "$type": "System.Byte[], mscorlib",
+          "$value": "CAgICAgICAgICAgICAgICAgIDw8PDw8PDw8PCAgICAgICA8ICA8PDw8PCA8ICAgICAgPCA8PDw8PDwgIDwgICAgIDw8PDw8PDw8PDw8PCAgICA8IDw8PDw8PDw8PDwgICAgPDw8IDwgICA8IDw8ICAgIDw8PCA8IDwgPCA8PCAgICA8PDwgPCAgIDwgPDwgICAgPDw8PDw8PDw8PDw8ICAgIDw8PCA8IDwgICA8PCAgICA8PDwgPCA8IDwgPDwgICAgPDw8IDwgPCAgIDw8ICAgIDw8PDw8PDw8PDw8PCAgICA8PDw8PDw8PDw8PDwgICAgICAgICAgICAgICAgICAA="
+        },
+        "Width": 16,
+        "Height": 16,
+        "_guid": "65b508a1-baa4-41df-bd26-6c353da17fdc",
+        "_name": "BIN16x16",
+        "MaskDataInline": false,
+        "UseInLevelDesigner": true
+      },
+      {
+        "$type": "RGAS.SpectrumSprite, RGAS",
+        "Align256": false,
+        "GenerateVerticalMirror": false,
+        "GenerateHorizontalMirror": false,
+        "pixels": {
+          "$type": "System.Byte[], mscorlib",
+          "$value": "CAgICAgICAgICAgICAgICAgICAgICA8PDwgICAgICAgICAgICAgPDw8PCAgICAgICAgICAgIDw8PDw8ICAgICAgICAgICA8PDw8PDwgIDwgICAgICAgPDwgPDw8PDw8ICAgICAgIDw8ICAgPDw8ICAgICAgICA8PCAgICAgICAgICAgICAgPDwAAAAAAAAAACAgICAgIDw8AAAAAAAAAAAgIDw8PDw8PAAAAAAAAAAAIDw8PDw8PDwAAAAAAAAAACA8PDw8PDw8AAAAAAAAAAAgPDw8PDw8PAAAAAAAAAAAICA8PDw8PCAAAAAAAAAAACAgICAgICAgAAAAAAAAAAAA="
+        },
+        "Width": 16,
+        "Height": 16,
+        "_guid": "30b34dfc-a3ec-4d20-b220-3d6324ddb76a",
+        "_name": "musicay16x16",
+        "MaskDataInline": false,
+        "UseInLevelDesigner": true
+      },
+      {
+        "$type": "RGAS.SpectrumSprite, RGAS",
+        "Align256": false,
+        "GenerateVerticalMirror": false,
+        "GenerateHorizontalMirror": false,
+        "pixels": {
+          "$type": "System.Byte[], mscorlib",
+          "$value": "CAgICAgICAgICAgICAgICAgIDw8PDw8PDw8PDw8PCAgIDwgIDw8PDw8PDw8PDw8ICA8IDw8PCAgIDw8PDw8PCAgPDw8PDwgIDwgPDw8PDwgIDwgPDw8ICA8PCA8PDw8ICA8PDw8PCAgPDwgPDw8PCAgPDw8PDwgIDwgPDw8PDwgIDw8PDw8ICAgPDw8PDw8ICA8PDw8PDw8PDw8PDw8PCAgIDw8PDw8PDw8PDw8PCAgICAgICAgICAgICAgICAgICAgIDw8PDw8PDw8PDwgICAgICA8PDw8PDw8PDw8ICAgICAgPDw8PDw8PDw8PCAgICAgICAgICAgICAgICAgICAA="
+        },
+        "Width": 16,
+        "Height": 16,
+        "_guid": "ee8bd6d3-badf-4578-9a6a-335eb37e94c3",
+        "_name": "rom16x16",
+        "MaskDataInline": false,
+        "UseInLevelDesigner": true
+      },
+      {
+        "$type": "RGAS.SpectrumSprite, RGAS",
+        "Align256": false,
+        "GenerateVerticalMirror": false,
+        "GenerateHorizontalMirror": false,
+        "pixels": {
+          "$type": "System.Byte[], mscorlib",
+          "$value": "Dw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PCAgIDw8ICAgPDw8PDw8PCAgIDw8ICAgPDw8PDw8PCAgIDw8ICAgPDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDwgICA8PCAgIDw8PDw8PDwgICA8PCAgIDw8PDw8PDwgICA8PCAgIDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8ICAgPCA8PCA8PDw8PDw8PDwgIDw8ICA8PDw8PDw8PDwgPDw8PCAgPDw8PDw8PDw8ICAgPCA8PCAA="
+        },
+        "Width": 16,
+        "Height": 16,
+        "_guid": "44a8a1b5-60c8-43f6-918f-287ac9a6e2f6",
+        "_name": "BASIC16x16",
+        "MaskDataInline": false,
+        "UseInLevelDesigner": true
+      },
+      {
+        "$type": "RGAS.SpectrumSprite, RGAS",
+        "Align256": false,
+        "GenerateVerticalMirror": false,
+        "GenerateHorizontalMirror": false,
+        "pixels": {
+          "$type": "System.Byte[], mscorlib",
+          "$value": "CAgICAgICAgIDw8PCAgICAgPDw8ICAgICA8PDw8PDw8IDw8PDw8PDwgPDw8PDw8PCA8PDw8PDw8IDw8PDw8PDwA="
+        },
+        "Width": 8,
+        "Height": 8,
+        "_guid": "498ce0b9-f1d0-4d3a-8092-bad24f4cb957",
+        "_name": "folder8x8",
+        "MaskDataInline": false,
+        "UseInLevelDesigner": true
+      },
+      {
+        "$type": "RGAS.SpectrumSprite, RGAS",
+        "Align256": false,
+        "GenerateVerticalMirror": false,
+        "GenerateHorizontalMirror": false,
+        "pixels": {
+          "$type": "System.Byte[], mscorlib",
+          "$value": "CAgICAgICAgIDw8PDw8PDwgPCAgICAgPCA8IDwgPCA8IDwgPCAgIDwgPDw8PCAgPCA8PDw8PDw8IDw8PDw8PDwA="
+        },
+        "Width": 8,
+        "Height": 8,
+        "_guid": "84cbc7ca-0888-4a50-b6ad-5a4b9861a189",
+        "_name": "screen8x8",
+        "MaskDataInline": false,
+        "UseInLevelDesigner": true
+      },
+      {
+        "$type": "RGAS.SpectrumSprite, RGAS",
+        "Align256": false,
+        "GenerateVerticalMirror": false,
+        "GenerateHorizontalMirror": false,
+        "pixels": {
+          "$type": "System.Byte[], mscorlib",
+          "$value": "CAgICAgICAgIDwgPDw8IDwgICA8PDwgICA8IDw8PCA8ICAgPDw8ICAgPCA8PDwgPCAgIDw8PCAgIDwgPDw8IDwA="
+        },
+        "Width": 8,
+        "Height": 8,
+        "_guid": "c6e25671-e839-4990-994e-23d2f8707907",
+        "_name": "snapshot8x8",
+        "MaskDataInline": false,
+        "UseInLevelDesigner": true
+      },
+      {
+        "$type": "RGAS.SpectrumSprite, RGAS",
+        "Align256": false,
+        "GenerateVerticalMirror": false,
+        "GenerateHorizontalMirror": false,
+        "pixels": {
+          "$type": "System.Byte[], mscorlib",
+          "$value": "CAgICAgICAgICAgICAgICAgPDw8PDw8PCA8IDw8PCA8IDwgICAgIDwgPCA8IDwgPCA8ICAgICA8IDw8PDw8PDwA="
+        },
+        "Width": 8,
+        "Height": 8,
+        "_guid": "08a076bd-7a98-4554-b66c-9353e8a45aa8",
+        "_name": "tap8x8",
+        "MaskDataInline": false,
+        "UseInLevelDesigner": true
+      },
+      {
+        "$type": "RGAS.SpectrumSprite, RGAS",
+        "Align256": false,
+        "GenerateVerticalMirror": false,
+        "GenerateHorizontalMirror": false,
+        "pixels": {
+          "$type": "System.Byte[], mscorlib",
+          "$value": "CAgICAgICAgICAgICAgICAgPCA8PDwgPCA8PCAgIDw8IDw8PDw8PDwgPCA8PDwgPCA8PDw8PDw8IDw8PDw8PDwA="
+        },
+        "Width": 8,
+        "Height": 8,
+        "_guid": "dbc539ab-583d-4cf0-8051-f50d40993036",
+        "_name": "tzx8x8",
+        "MaskDataInline": false,
+        "UseInLevelDesigner": true
+      },
+      {
+        "$type": "RGAS.SpectrumSprite, RGAS",
+        "Align256": false,
+        "GenerateVerticalMirror": false,
+        "GenerateHorizontalMirror": false,
+        "pixels": {
+          "$type": "System.Byte[], mscorlib",
+          "$value": "CAgICAgICAgIDw8PDw8PCAgPDw8PDw8PCA8PDw8PDw8IDwgPCAgIDwgPCA8IDwgPCA8IDwgICA8IDw8PDw8PDwA="
+        },
+        "Width": 8,
+        "Height": 8,
+        "_guid": "a28d53ab-1074-4b4a-a290-abbf6d98d7e7",
+        "_name": "BIN8x8",
+        "MaskDataInline": false,
+        "UseInLevelDesigner": true
+      },
+      {
+        "$type": "RGAS.SpectrumSprite, RGAS",
+        "Align256": false,
+        "GenerateVerticalMirror": false,
+        "GenerateHorizontalMirror": false,
+        "pixels": {
+          "$type": "System.Byte[], mscorlib",
+          "$value": "CAgICAgICAgICAgIDwgICAgICAgPDwgICAgICA8PDwgICAgIDwgIDwgIDw8PCAgICA8PDw8ICAgICA8PCAgICAA="
+        },
+        "Width": 8,
+        "Height": 8,
+        "_guid": "d8e6690e-c3e7-4e5c-97b5-3f6cb461e8e8",
+        "_name": "musicay8x8",
+        "MaskDataInline": false,
+        "UseInLevelDesigner": true
+      },
+      {
+        "$type": "RGAS.SpectrumSprite, RGAS",
+        "Align256": false,
+        "GenerateVerticalMirror": false,
+        "GenerateHorizontalMirror": false,
+        "pixels": {
+          "$type": "System.Byte[], mscorlib",
+          "$value": "CAgICAgICAgIDw8PDw8PDwgPDwgIDw8PCA8PCA8IDw8IDw8ICA8PDwgPDw8PDw8PCAgICAgICAgICA8PDw8PCAA="
+        },
+        "Width": 8,
+        "Height": 8,
+        "_guid": "c428322c-9928-43d0-ad7c-ac7b0e5b37f9",
+        "_name": "rom8x8",
+        "MaskDataInline": false,
+        "UseInLevelDesigner": true
+      },
+      {
+        "$type": "RGAS.SpectrumSprite, RGAS",
+        "Align256": false,
+        "GenerateVerticalMirror": false,
+        "GenerateHorizontalMirror": false,
+        "pixels": {
+          "$type": "System.Byte[], mscorlib",
+          "$value": "Dw8PCA8ICA8IDw8ICA8PCA8ICAgIDw8IDw8PCA8ICA8ICAgICAgICAgPDwgPDwgPDw8IDw8IDw8PCA8PCA8PCAA="
+        },
+        "Width": 8,
+        "Height": 8,
+        "_guid": "f3ae7d0b-aa3d-4b5a-b780-a265fbfc2d21",
+        "_name": "BASIC8x8",
+        "MaskDataInline": false,
+        "UseInLevelDesigner": true
+      }
+    ]
+  },
+  "_levelList": {
+    "$type": "System.Collections.Generic.List`1[[RGAS.GameLevel, RGAS]], mscorlib",
+    "$values": []
+  },
+  "_sound": {
+    "$type": "RGAS.SoundSet, RGAS",
+    "MusicList": {
+      "$type": "System.Collections.Generic.List`1[[RGAS.AYMusic, RGAS]], mscorlib",
+      "$values": []
+    }
+  },
+  "Mode": 0,
+  "_targetPlatform": 2,
+  "Inks": {
+    "$type": "System.Byte[], mscorlib",
+    "$value": "AAECAwQFBgcICQoLDA0ODw=="
+  },
+  "_formatterType": "RGAS.PlatformProviders.SpectrumSpriteSet+SpectrumAssemberFormatter, RGAS, Version=1.2.5.0, Culture=neutral, PublicKeyToken=null",
+  "OSPlatform": "Microsoft Windows NT 6.2.9200.0 C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\",
+  "RGASVersion": "1.2.5.0",
+  "EncodeLevelsRLE": false,
+  "OutputSpriteDimensions": false
+}
