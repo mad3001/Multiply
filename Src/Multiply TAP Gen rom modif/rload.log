@@ -1,0 +1,568 @@
+001   0000             			DEVICE ZXSPECTRUM128
+002   0000             			ENCODING "DOS"
+003   0000             
+004   0000             PAUSELOOPSN		EQU 64							; Pause function - Number of loops for Dandanator commands
+005   0000             
+006   0000             			include "resources/macro_tap_mult.asm"
+001+  0000             
+002+  0000             		;MACRO SLOT_B
+003+  0000             		;    Send Dandanator command
+004+  0000             		;		IN	- B	: B=Command/Data
+005+  0000             		;		All pulses go to address 0
+006+  0000             		;		Destroys B (return with B=0), Flags are not affected
+007+  0000             		; NOTE: 0 is signaled by 256 pulses.
+008+  0000             		;	Equivalent to SENDNRCMD without pause btw commands
+009+  0000             		MACRO SLOT_B
+010+  0000~            .slot_b		INC HL
+011+  0000~            			DEC HL
+012+  0000~            			LD (0),A
+013+  0000~            			DJNZ .slot_b
+014+  0000             		ENDM
+015+  0000             
+016+  0000             		;MACRO WAIT_B_EXT. Reduced version (3 bytes) waiting the B value (loaded prior to call this)
+017+  0000             		;		Destroys B (return with B=0), Flags are not affected
+018+  0000             		
+019+  0000             		MACRO WAIT_B_EXT
+020+  0000~            .wait_b0	DJNZ .wait_b0
+021+  0000             		ENDM
+022+  0000             
+023+  0000             		;MACRO WAIT_B value
+024+  0000             		;		IN - time value
+025+  0000             		;		Destroys B (return with B=0), Flags are not affected
+026+  0000             		
+027+  0000             		MACRO WAIT_B value
+028+  0000~            			LD B,value
+029+  0000~            			WAIT_B_EXT
+030+  0000             		ENDM
+031+  0000             
+032+  0000             		;MACRO SENDNRCMD_B
+033+  0000             		;    Send Dandanator command
+034+  0000             		;		IN	- B	: B=Command/Data
+035+  0000             		;		All pulses go to address 0
+036+  0000             		;		Destroys B (return with B=0), Flags are not affected
+037+  0000             		; NOTE: 0 is signaled by 256 pulses.
+038+  0000             		;	Equivalent to SENDNRCMD with pause as per value
+039+  0000             		MACRO SENDNRCMD_B value
+040+  0000~            			SLOT_B
+041+  0000~            			WAIT_B value			
+042+  0000             		ENDM
+043+  0000             		
+044+  0000             		;DAN_BIG_COMMAND_NOWAIT
+045+  0000             		; ---- This is equivalente to CALL SENDSPCMD with A=DANCMD_MULTIPLY, D=DANDAT_MULTIPLY, E=register A
+046+  0000             		; 			but it does not send the confirmation pulse
+047+  0000             		;	IN - B = Command to send
+048+  0000             		;	IN - Values passed for Data 1 and Data 2
+049+  0000             		; OUT - Destroys B (return with B=0), Flags are not affected
+050+  0000             		MACRO DAN_BIG_COMMAND_NOWAIT C2, C3
+051+  0000~            			;LD	B,C1			; Command is set externally in B reg
+052+  0000~            			SLOT_B
+053+  0000~            			WAIT_B PAUSELOOPSN			
+054+  0000~            			LD	B,C2			; Data 1
+055+  0000~            			SLOT_B
+056+  0000~            			WAIT_B PAUSELOOPSN
+057+  0000~            			LD  B,C3			; Data 2
+058+  0000~            			SLOT_B
+059+  0000~            			WAIT_B PAUSELOOPSN
+060+  0000             		ENDM
+061+  0000             		
+062+  0000             		;DAN_BIG_COMMAND_NOW
+063+  0000             		; ---- This is equivalente to CALL SENDSPCMD with A=DANCMD_MULTIPLY, D=DANDAT_MULTIPLY, E=register A
+064+  0000             		; 			including confirmation pulse
+065+  0000             		;	IN - As per values passed...
+066+  0000             		; OUT - Destroys B (return with B=0), Flags are not affected
+067+  0000             		MACRO DAN_BIG_COMMAND_NOW C1, C2, C3
+068+  0000~            			LD	B,C1			; Command
+069+  0000~            			DAN_BIG_COMMAND_NOWAIT C2, C3
+070+  0000~            			LD 	(0),A
+071+  0000             		ENDM
+072+  0000             
+073+  0000             		;DAN_BIG_COMMAND_NOWAIT
+074+  0000             		; ---- This is equivalente to CALL SENDSPCMD with A=DANCMD_MULTIPLY, D=DANDAT_MULTIPLY, E=register A
+075+  0000             		; 			but it does not send the confirmation pulse
+076+  0000             		;	IN - As per values passed...
+077+  0000             		; OUT - Destroys B (return with B=0), Flags are not affected
+078+  0000             		MACRO DAN_BIG_COMMAND C1, C2, C3
+079+  0000~            			DAN_BIG_COMMAND_NOW C1, C2, C3
+080+  0000             		ENDM
+081+  0000             
+082+  0000             
+083+  0000             		;MACRO PAUSELONG aprox 65mS
+084+  0000             		; Enter here with B=0, Flags are not affected, require SP value >#3FFF (if SP is #0000-#3FFF it will send pulses to dandanator)
+085+  0000             		MACRO PAUSE_LONG
+086+  0000~            .pauselong: 
+087+  0000~            			.4		EX (SP),HL
+088+  0000~            			DJNZ	.pauselong
+089+  0000             		ENDM
+090+  0000             		
+091+  0000             		;MACRO PAUSE_LONGIXA aprox 65mS
+092+  0000             		; Enter here with B=0, A and Flags are affected but don't require SP so SP can be #0000-#FFFF
+093+  0000             		MACRO PAUSE_LONGIXA
+094+  0000~            		;Customized PAUSE_LONG without using SP but affects A and Flags
+095+  0000~            .pauselongIX: 
+096+  0000~            			.4		AND (IX);			;Replace EX (SP),HL
+097+  0000~            			DJNZ	.pauselongIX
+098+  0000             		ENDM
+099+  0000             		
+007   0000             			include "resources/multiply_commands_v1.asm"
+001+  0000             //Multiply_commands / Types / Constants
+002+  0000             
+003+  0000             //Commands for Arduino
+004+  0000             CMD_ZX2INO_REQ_ID			EQU		0x01			//Ask for Multiply Identification
+005+  0000             CMD_ZX2INO_REQ_RESET		EQU		0x02			//Reset Arduino
+006+  0000             CMD_ZX2SD_SETZXTYPE     	EQU		0x03		    //Hard type of Spectrum machine: 1=16k, 3=48k, 8=128k
+007+  0000             
+008+  0000             //Commands for SDCARD
+009+  0000             CMD_ZX2SD_OFWRITE			EQU		0x06			//Open File to Write
+010+  0000             CMD_ZX2SD_OFWRITE_IX     	EQU		0x07			//Open File for Write by index
+011+  0000             CMD_ZX2SD_OFREAD			EQU		0x08			//Open File to Read
+012+  0000             CMD_ZX2SD_OFREAD_IX     	EQU		0x09			//Open File for Read by index
+013+  0000             
+014+  0000             // Change Directory
+015+  0000             CMD_ZX2SD_CD_ROOT			EQU		0x0A			//Go to root of SDCARD
+016+  0000             CMD_ZX2SD_CD				EQU		0x0B			//Change to dir
+017+  0000             CMD_ZX2SD_CD_IX				EQU		0x0C			//Change to dir by index
+018+  0000             CMD_ZX2SD_GETDIR        	EQU		0x0D 		    //Get long name of current dir
+019+  0000             
+020+  0000             // Directory Listing
+021+  0000             CMD_ZX2SD_LS_RELATIVE		EQU		0x0E			//Get list of current dir
+022+  0000             CMD_ZX2SD_LS_ABSOLUTE		EQU		0x0F			//Get list of specific dir (full path)
+023+  0000             
+024+  0000             //Commands for screen file type
+025+  0000             CMD_ZX2SD_SCR				EQU		0x10			//Ask for Screen Data
+026+  0000             
+027+  0000             //Commands for SNAPSHOTS - Request File Contents
+028+  0000             CMD_ZX2SD_Z80_16K			EQU		0x11			//Ask for Data of Z80 16k snapshot
+029+  0000             CMD_ZX2SD_Z80_48K			EQU		0x12			//Ask for Data of Z80 48k snapshot
+030+  0000             CMD_ZX2SD_Z80_128K			EQU		0x13			//Ask for Data of Z80 128k snapshot
+031+  0000             CMD_ZX2SD_SCR_FROM_Z80		EQU		0x14			//Ask for Screen of Z80 file
+032+  0000             CMD_ZX2SD_SNA_48K			EQU		0x16			//Ask for Data of Z80 48k snapshot
+033+  0000             CMD_ZX2SD_SNA_128K			EQU		0x17			//Ask for Data of Z80 128k snapshot
+034+  0000             CMD_ZX2SD_SCR_FROM_SNA		EQU		0x18			//Ask for Screen of SNA file
+035+  0000             
+036+  0000             //Additional information from Entries (Directory/File)
+037+  0000             CMD_ZX2SD_GETINFO			EQU		0x1E			//Ask for 4 bytes of additional data
+038+  0000             
+039+  0000             //Commands for tap/tzx files
+040+  0000             CMD_ZX2SD_TAP				EQU		0x20			//Ask for TAP Data
+041+  0000             CMD_ZX2SD_TAP2				EQU  	0x21			//Ask for TAP Data 2
+042+  0000             CMD_ZX2SD_TAP_ULA			EQU  	0x22			//Ask for TAP directly to ULA port
+043+  0000             CMD_ZX2SD_SCRTAP        	EQU		0x23 		    //Ask for Screen into a TAP file
+044+  0000             
+045+  0000             CMD_ZX2SD_TZX				EQU		0x24			//Ask for TZX Data
+046+  0000             CMD_ZX2SD_TZX2				EQU  	0x25			//Ask for TZX Data 2
+047+  0000             CMD_ZX2SD_TZX_ULA			EQU  	0x26			//Ask for TAP directly to ULA port
+048+  0000             
+049+  0000             //Commands for binary files
+050+  0000             CMD_ZX2SD_BINARY_INFO		EQU		0x28			//Ask for Bin file CMD_ZX2SD_BINARY_INFO
+051+  0000             CMD_ZX2SD_BINARY_DATA		EQU 	0x29			//Ask for Bin file DATA
+052+  0000             
+053+  0000             //Commands for ROMSET
+054+  0000             CMD_ZX2SD_ROMSETBLK4B		EQU		0x30			//Ask for ROMSET block with 4bit
+055+  0000             CMD_ZX2SD_ROMSETBLKSER		EQU		0x31			//Ask for ROMSET block with Serial
+056+  0000             
+057+  0000             // Commands from PC
+058+  0000             CMD_PC2AR_ROMSET_TUNNEL		EQU		0xED			//Ask for Romset through Arduino Serial (tunnel)
+059+  0000             CMD_PC2AR_ROMSET_TUN2		EQU		0xF3			//Ask for Romset through Arduino Serial (tunnel)
+060+  0000             CMD_PC2AR_BIN_TUNNEL		EQU		0xEF			//Ask for Binary file through Arduino Serial (tunnel)
+061+  0000             
+062+  0000             //File Types as per directory listing
+063+  0000             //// FILETYPES => FILECONTENTS 4Bit
+064+  0000             FT_END_DIRECTORY			EQU		0x00			//End of directory listing
+065+  0000             
+066+  0000             FT_DIRECTORY				EQU		0x0C			//Directory entry
+067+  0000             
+068+  0000             FT_SCR						EQU		0x10			//Screen (6912 bytes)
+069+  0000             
+070+  0000             FT_Z80_16K					EQU		0x11			//Z80 for 16k snapshot
+071+  0000             FT_Z80_48K					EQU		0x12			//Z80 for 48k snapshot
+072+  0000             FT_Z80_128K					EQU		0x13			//Z80 for 128k snapshot
+073+  0000             FT_Z80_SCR					EQU		0x14			//Screen of Z80
+074+  0000             
+075+  0000             FT_SNA_48K					EQU		0x16			//SNA for 48k snapshot
+076+  0000             FT_SNA_128K					EQU		0x17			//SNA for 128k snapshot
+077+  0000             FT_SNA_SCR					EQU		0x18			//Screen of SNA
+078+  0000             
+079+  0000             FT_TAP						EQU		0x20			//TAP File
+080+  0000             
+081+  0000             FT_BINARY					EQU		0x28			//BIN File
+082+  0000             
+083+  0000             FT_ROMSET					EQU		0x30			//Romset (512k)
+084+  0000             
+085+  0000             //Constants for ASM routines
+086+  0000             
+087+  0000             DANCMD_MULTIPLY	EQU		52							//Dandantor command for Multiply operations
+088+  0000             DANDAT_MULTIPLY	EQU		1							//Dandantor data for Multiply command DANCMD_MULTIPLY
+089+  0000             
+090+  0000             SNAP_HEADER		EQU		9							//Used with Commands. 9=Get header of SNA/Z80
+091+  0000             SNAP_CHUNK		EQU		10							//Used with Commands. 10=Get Chunk
+008   0000             
+009   0000             			ORG	0
+010   0000             
+011   0000             			;incbin "48k_AUTOLOAD.rom"		;48k Rom for composing the changes
+012   0000             			incbin "48k.rom"		;48k Rom for composing the changes
+013   4000             
+014   4000             ;This special ROM only works if Multiply when the file was Opened prior to launch the modified ROM. That way the ROM does not need to know the file using
+015   4000             ;	and all the data will arrive as it's stored in the TAP file. It's cyclic so when arriving last entry it will go to the very 1st entry again.
+016   4000             ;	Multiply will deal with the file in SD so what is into the TAP only concerns to Multiply
+017   4000             
+018   4000             ;Format of each "Data" in a TAP File
+019   4000             ; +-+-+-+-+-+-+-+-+-+-+-+
+020   4000             ; |L|L|F|D|.|.|.|.|.|D|C|
+021   4000             ; +-+-+-+-+-+-+-+-+-+-+-+
+022   4000             ;   | |File information |
+023   4000             ;	|
+024   4000             ;  L=2 byte for length of "File information" (little endian format: lsb, msb )
+025   4000             ;  F=1 byte of Flag (passed to spectrum as "File information"
+026   4000             ;  D=x bytes data (passed to spectrum as "File information"
+027   4000             ;  C=1 byte of checksum (XOR of Flag and all D bytes), NOT passed to spectrum
+028   4000             ;  Doing a XOR of all bytes between F and C have a result of 0 if checksum is correct (checksum is not checked)
+029   4000             
+030   4000             ;	Checksum is not checked (this is not a tape.... no errors expected because checksum error in the transfer of data).
+031   4000             
+032   4000             
+033   4000             ;			Save routine patch: 04D0-053E			NOT USED as Saving Routine (Save disabled), Multiply will not save data (at least not at this moment, who knows in the future...)
+034   4000             ;					A=Flag (usually 00=Header,FF=Data)
+035   4000             ;					IX=Begining
+036   4000             ;					DE=Length
+037   4000             ;				Returns with Carry active after saving. Carry inactive if BREAK was pressed during saving
+038   4000             ;
+039   4000             				org	$04D0
+040   04D0 A7          				AND A
+041   04D1 C9          				RET
+042   04D2             
+043   04D2             ;------------------------------------------------------------------------------------------------------------------------
+044   04D2             ; Load 4bits block of data at address specified by HL, DE contains size
+045   04D2             ;  IN HL:Beginning address to store data
+046   04D2             ;  IN DE:Length of data to read
+047   04D2             ;	IN C = Low address for returning with JP (HL), high is always #05
+048   04D2             ;	OUT DE:Beging address + Length - 1 (HL=Last address filled with data)
+049   04D2             ;	OUT A:0
+050   04D2             ;	OUT Flags modified... Z=activated always, Carry=0 always
+051   04D2             ;------------------------------------------------------------------------------------------------------------------------
+052   04D2             ;Here for waiting a "1" to start / process next bit
+053   04D2             Load4bitBlk: 
+054   04D2 2B          		DEC HL
+055   04D3             LoopByte: 
+056   04D3             
+057   04D3             LoopFor1: 
+058   04D3 DB 1F       		IN		A,(#1F)				;11 Ts
+059   04D5 1F          		RRA							;4 Ts - bit 0 to carry, load value shifted to bits 3,2,1,0
+060   04D6 30 FB       		JR		NC,LoopFor1		;12/7 Ts - 1st nibble have always bit0=1
+061   04D8             
+062   04D8             EndLoopFor1: 
+063   04D8 23          		INC		HL					;6 Ts
+064   04D9 1B          		DEC		DE					;6 Ts
+065   04DA 77          		LD (HL),A					;7 Ts - RLD							;18 Ts - Move LOW nibble of A (really is the HIGH nibble we need)  to (HL) into LOW nibble
+066   04DB             
+067   04DB             
+068   04DB             LoopFor0: 
+069   04DB DB 1F       		IN		A,(#1F)				;11 Ts
+070   04DD 1F          		RRA							;4 Ts - bit 0 to carry, load value shifted to bits 3,2,1,0
+071   04DE 38 FB       		JR		C,LoopFor0			;12/7 Ts - 2nd nibble have always bit0=0
+072   04E0             
+073   04E0             EndLoopFor0: 
+074   04E0 ED 6F       		RLD							;18 Ts - Move LOW nibble to (HL) into LOW nibble, previous LOW nibble in (HL) goes to HIGH nibble in (HL)
+075   04E2 7A          		LD		A,D					;4 Ts
+076   04E3 B3          		OR		E					;4 Ts
+077   04E4 20 ED       		JR		NZ,LoopByte			;12 Ts
+078   04E6 54          		LD		D,H
+079   04E7 5D          		LD		E,L					;DE=last address loaded
+080   04E8 26 05       		LD		H,#05				;Return is to address #05xx
+081   04EA 69          		LD		L,C					;Low byte of address
+082   04EB E9          		JP		(HL)
+083   04EC             		;RET								;Return with Z active
+084   04EC 00          		DEFS	8,0
+085   04F4             ;SendDanCMDs - Send command 46 (lock unlock) or 52 (send serial) as per minimal register usage
+086   04F4             ;	and without using stack.. only uses JP (HL) so don't modifying Stack
+087   04F4             ;	IN - A = Data 1 and Data 2 for command 46
+088   04F4             ;	IN - A = Data 2 for command 52 (Data 1 is always 1)
+089   04F4             ;	IN - Flag Z=0 for command 46, A, A (lock unlock)  A=register A
+090   04F4             ;	IN - Flag Z=1 for command 52, 1, A (send serial)  A=register A
+091   04F4             ;	IN - Flag C=0 for Long Command (wait after command)
+092   04F4             ;	IN - Flag C=1 for Short Command (don't wait after command)
+093   04F4             ;	IN - C = Low byte of address to return (address will be #05xx)
+094   04F4             SendDanCMDs: 
+095   04F4 26 05       			LD		H,#05							;All jumps will be #05xx
+096   04F6 06 2E       			LD		B,46							;Command 46 (lock unlock)
+097   04F8 20 02       			JR		NZ,Send_Ser
+098   04FA 06 34       			LD		B,52							;Command 52 (send serial)
+099   04FC             Send_Ser: 
+100   04FC 2E 00       			LD		L, LOW SendDanCMDs_Ret1				;Address for returning
+101   04FE 18 1B       			JR		SendCMD							;Send Command
+102   0500             SendDanCMDs_Ret1: 
+103   0500             
+104   0500 47          			LD		B,A								;Command 46 have Data 1 = A
+105   0501 20 02       			JR		NZ,Send_Ser1
+106   0503 06 01       			LD		B,1								;Command 52 have Data 1 = 1
+107   0505             Send_Ser1: 
+108   0505 2E 09       			LD		L, LOW SendDanCMDs_Ret2
+109   0507 18 12       			JR		SendCMD							;Send Data1
+110   0509             SendDanCMDs_Ret2: 
+111   0509             
+112   0509 47          			LD		B,A								;Both, Command 46 and 52 have Data 2 = A
+113   050A 2E 0E       			LD		L, LOW SendDanCMDs_Ret3
+114   050C 18 0D       			JR		SendCMD							;Send Data2
+115   050E             SendDanCMDs_Ret3: 
+116   050E 32 00 00    			LD		(0),A							;Execute command
+117   0511 38 06       			JR		C,SendAfterLong					;Carry=1 for short command
+118   0513             			PAUSE_LONG
+118   0513 E3          > EX (SP),HL
+118   0514 E3          > EX (SP),HL
+118   0515 E3          > EX (SP),HL
+118   0516 E3          > EX (SP),HL
+118   0517 10 FA       >			DJNZ	.pauselong
+119   0519             SendAfterLong: 			
+120   0519 69          			LD		L,C								;Low Address to return
+121   051A E9          			JP		(HL)
+122   051B             
+123   051B             SendCMD: 
+124   051B             			SLOT_B									;Send Command as per B reg
+124   051B 23          >.slot_b		INC HL
+124   051C 2B          >			DEC HL
+124   051D 32 00 00    >			LD (0),A
+124   0520 10 F9       >			DJNZ .slot_b
+125   0522             			WAIT_B	PAUSELOOPSN						;Little pause
+125   0522 06 40       >			LD B,value
+125   0524 10 FE       >.wait_b0	DJNZ .wait_b0
+126   0526 E9          			JP		(HL)	
+127   0527             
+128   0527             ;Disable Checking BREAK key to avoid strange behaviours, ie games using SPACE that also loads data and could be "hanged" that way
+129   0527             			ORG $054A
+130   054A 18 03       				JR #054F
+131   054C             			ORG $0550
+132   0550 18 02       				JR #0554					;Skip BREAK key check [ Original is:  JR C,#0554  ;Jump unless a break is to be made ]
+133   0552             
+134   0552             		;	ORG $055C
+135   0552             		;		.2 NOP						;Avoid changing Border colour, removing OUT (#FE),A    At this moment A=#0F (border white)
+136   0552             
+137   0552             ;			Load routine patch: #056B - #0604 both inclusive total available is #A3=163 bytes
+138   0552             ;					A'=Flag (usually 00=Header,FF=Data)
+139   0552             ;					IX=Begining
+140   0552             ;					DE=Length
+141   0552             ;				Returns with:
+142   0552             ;					Carry=1 and Z=0 if sucessfully loaded, also A=1, H=0, DE=0, IX=BeginIX+lengthDE   (ie 5CE2+11 = 5CF3 , 5CCB+658 = 6323)
+143   0552             ;					Carry=0 and Z=0 if Flag was incorrect -Also if Break was pressed (for Multiply BREAK is never checked) - Also IX=BeginIX, DE=lengthDE
+144   0552             ;					Carry=0 and Z=1 if error loading data - IX,DE as per last address loaded correctly or at the end if error with CRC
+145   0552             ;					Carry=1 and Z=1 => will never happend
+146   0552             			ORG	$056B
+147   056B             ;BeginLoadRoutine:
+148   056B             
+149   056B 3E 10       				LD		A,#10				;#10 for unlocking dandanator
+150   056D A7          				AND		A					;Z=0 for Command 46, also Carry=0 for Long Confirmation
+151   056E 0E 72       				LD		C, LOW AfterUnlock	;Return address after command sent
+152   0570 18 82       				JR		SendDanCMDs			;Send command (using long confirmation to be sure Dandanator is ready)
+153   0572             AfterUnlock: 
+154   0572 18 52       				JR		ZX2SD_ASK_TAP		;Ask for Data from TAP : A'= Flag, DE=length, IX=Start address. Will return to ASK_Ret
+155   0574             ASK_Ret: 
+156   0574             			;Now check loading area does not enter in conflict with ROM (#0000-#3FFF)
+157   0574 DD 7C       				LD		A,IXH
+158   0576 FE 40       				CP		#40					;Check start address greater than #3FFF
+159   0578 30 05       				JR		NC,AddrOK
+160   057A 21 00 40    				LD		HL,#4000			;If Start Address is <#4000 change Start Address to #4000
+161   057D 18 04       				JR		AddrToLoad
+162   057F             AddrOK: 
+163   057F             			;	LD		A,IXH
+164   057F 67          				LD		H,A
+165   0580 DD 7D       				LD		A,IXL
+166   0582 6F          				LD		L,A					;HL=IX
+167   0583             AddrToLoad: 
+168   0583 11 05 00    				LD		DE,5				;1st block receiving Status, Valid length and Valid Start Address for loading data.
+169   0586 0E 8B       				LD		C,LOW After1st4bit		;For Load4bitBlk we store in C the low byte (high is always #05) of the returning address
+170   0588 C3 D2 04    				JP		Load4bitBlk			;Get 3 bytes for Status and Length . Pending ADD 4 more for Start address and value for IX to return MARIO MARIO
+171   058B             After1st4bit: 
+172   058B EB          				EX		DE,HL				;Exchange as this version of Load4bitBlk return address in DE
+173   058C 11 04 00    				LD		DE,4				;Loading 5 bytes return address is Initial+4 (1 less)
+174   058F A7          				AND		A
+175   0590 ED 52       				SBC		HL,DE				;So HL is the zone where got 5 bytes
+176   0592 7E          				LD		A,(HL)				;A=Status, will remain in A' reg upto ending the loading
+177   0593             											;		C=0xFF Error Flag, 0x00 Load OK, 0x01 Less , 0x02 Great
+178   0593 3C          				INC		A					;A=0x00 Error Flag, 0x01 Load OK, 0x02 Less , 0x03 Great
+179   0594 28 19       				JR		Z,TAP_AfterLoad		;Status was 0xFF (now 0x00) => No load, Error Flag
+180   0596 08          				EX		AF,AF				;Save A'=0x00 Error Flag, 0x01 Load OK, 0x02 Less , 0x03 Great
+181   0597             TAP_Load: 
+182   0597 23          				INC		HL
+183   0598 5E          				LD		E,(HL)				;lsb of Length
+184   0599 23          				INC		HL
+185   059A 56          				LD		D,(HL)				;msb of Length so DE=Length
+186   059B 23          				INC		HL
+187   059C 7E          				LD		A,(HL)				;lsb of Start Address
+188   059D 23          				INC		HL
+189   059E 66          				LD		H,(HL)				;msb of Start Address
+190   059F 6F          				LD		L,A					;So HL=Start Address
+191   05A0 0E A5       				LD		C,LOW After2nd4bit		;For Load4bitBlk we store in C the low byte (high is always #05) of the returning address
+192   05A2 C3 D2 04    				JP		Load4bitBlk			;Get the data, HL=Begin, DE=Length
+193   05A5             After2nd4bit: 
+194   05A5 13          				INC		DE					;As Load4bitBlk return with DE = Begin+Legth-1
+195   05A6 DD 62       				LD		IXH,D
+196   05A8 DD 6B       				LD		IXL,E				;IX=DE so returns with the next address after last loadeed (as real tap routine)
+197   05AA 11 00 00    				LD		DE,0				;Return with DE=0 (as spectrum ROM)
+198   05AD 18 01       				JR		TAP_AfterLoadAF		;Skip ex af,af (we did it previously in this branch)
+199   05AF             TAP_AfterLoad: 
+200   05AF 08          				EX		AF,AF				;Arriving here from other branch prior to save status to A' so change here
+201   05B0             TAP_AfterLoadAF: 
+202   05B0 AF          				XOR		A
+203   05B1 3C          				INC		A					;A=#01 for locking dandanator, also Z=0 for Command 46 and Carry=0 for Long Confirmation
+204   05B2 0E B7       				LD		C, LOW After1Unlock	;Return address after command sent
+205   05B4 C3 F4 04    				JP		SendDanCMDs			;Send command (using long confirmation to be sure Dandanator is ready)
+206   05B7             After1Unlock: 
+207   05B7             			;A'=Previous Status for Load OK or Error after loading: A'=0x00 Error Flag, 0x01 Load OK, 0x02 Less , 0x03 Great
+208   05B7 08          				EX		AF,AF				;A=Previous status, also Z=1 for Error Flag
+209   05B8 28 09       				JR		Z,ERRORFLAG			;Z=1 for Error Flag
+210   05BA 3D          				DEC		A					;A=0x01 for Load OK so dec a => A=0 Z Activate
+211   05BB 28 02       				JR		Z,LOADINGOK			;If Status was 0x00 Load OK
+212   05BD             			
+213   05BD             			;Here for Status A=0x02 or A=0x03 so data loaded but with Error (length differs)
+214   05BD             LOADINGERROR: 	
+215   05BD AF          				XOR A						;C=0, Z=1, A=0x00 (as real tape routine) for error loading
+216   05BE C9          				RET
+217   05BF             				
+218   05BF             LOADINGOK: 
+219   05BF AF          				XOR     A
+220   05C0 FE 01       				CP		1					;Z=0 for OK loading,Carry=1 for OK loading
+221   05C2 C9          				RET
+222   05C3             				
+223   05C3             ERRORFLAG: 
+224   05C3 AF          				XOR	 	A					;C=0, Z=1
+225   05C4 3D          				DEC 	A					;C=0, Z=0, A=0xFF (as real tape routine)
+226   05C5 C9          				RET
+227   05C6             
+228   05C6             ;ZX2SD_ASK_TAP - Command to ask for TAP Data
+229   05C6             ;	IN - A': Flag
+230   05C6             ;	IN - E:	lsb of Length
+231   05C6             ;	IN - D: msb of Length
+232   05C6             ;	IN - IXL: lsb of Start Address
+233   05C6             ;	IN - IXH: msb of Start Address
+234   05C6             ;  Changes A and B, only Carry flag is modified, return with Carry activated
+235   05C6             ZX2SD_ASK_TAP: 
+236   05C6 AF          			XOR		A								;Clear carry Flag (For adding Long Conf after send command), also Z=1 (required for command 52)
+237   05C7 3E 20       			LD		A,CMD_ZX2SD_TAP					;Command for asking data from TAP (file was opened previously in Multiply MLD slot)
+238   05C9 0E CE       			LD		C,LOW ZX2SD_ASK_TAP_RET1
+239   05CB C3 F4 04    			JP		SendDanCMDs						;Send A=Command (Carry inactive for Long Conf)
+240   05CE             ZX2SD_ASK_TAP_RET1: 
+241   05CE 08          			EX		AF,AF							;A'=Flag
+242   05CF 4F          			LD		C,A
+243   05D0 08          			EX		AF,AF
+244   05D1 79          			LD		A,C								;Send serial : Flag value							
+245   05D2 0E D7       			LD		C,LOW ZX2SD_ASK_TAP_RET2
+246   05D4 C3 F4 04    			JP		SendDanCMDs						;Send A=Command (Carry inactive for Long Conf)
+247   05D7             ZX2SD_ASK_TAP_RET2: 
+248   05D7 7B          			LD		A,E								;Send serial : lsb of Length
+249   05D8 0E DD       			LD		C,LOW ZX2SD_ASK_TAP_RET3
+250   05DA C3 F4 04    			JP		SendDanCMDs						;Send A=Command (Carry inactive for Long Conf)
+251   05DD             ZX2SD_ASK_TAP_RET3: 
+252   05DD 7A          			LD		A,D								;Send serial : msb of Length
+253   05DE 0E E3       			LD		C,LOW ZX2SD_ASK_TAP_RET4
+254   05E0 C3 F4 04    			JP		SendDanCMDs						;Send A=Command (Carry inactive for Long Conf)
+255   05E3             ZX2SD_ASK_TAP_RET4: 
+256   05E3 DD 7D       			LD		A,IXL							;Send serial : lsb of Start Address
+257   05E5 0E EA       			LD		C,LOW ZX2SD_ASK_TAP_RET5
+258   05E7 C3 F4 04    			JP		SendDanCMDs						;Send A=Command (Carry inactive for Long Conf)
+259   05EA             ZX2SD_ASK_TAP_RET5: 
+260   05EA DD 7C       			LD		A,IXH							;Send serial : msb of Start Address
+261   05EC 37          			SCF										;Carry active for short confirmation
+262   05ED 0E 74       			LD		C,LOW ASK_Ret					;After last command will return to ASK_Ret address
+263   05EF C3 F4 04    			JP		SendDanCMDs						;Send A=Command (Carry inactive for Long Conf)
+264   05F2             
+265   05F2             						;Return to caller
+266   05F2             				
+267   05F2             	
+268   05F2 00          				DEFS	$0605-$,0
+269   0605             
+270   0605             ;EndLoadRoutine:
+271   0605             			
+272   0605             		SAVEBIN "ROMMULTTAP.BIN",0,#4000		;Save the composed 48k ROM with the changes
+273   0605             		
+274   0605             
+
+Value    Label
+------ - -----------------------------------------------------------
+0x0040   PAUSELOOPSN
+0x0001 X CMD_ZX2INO_REQ_ID
+0x0002 X CMD_ZX2INO_REQ_RESET
+0x0003 X CMD_ZX2SD_SETZXTYPE
+0x0006 X CMD_ZX2SD_OFWRITE
+0x0007 X CMD_ZX2SD_OFWRITE_IX
+0x0008 X CMD_ZX2SD_OFREAD
+0x0009 X CMD_ZX2SD_OFREAD_IX
+0x000A X CMD_ZX2SD_CD_ROOT
+0x000B X CMD_ZX2SD_CD
+0x000C X CMD_ZX2SD_CD_IX
+0x000D X CMD_ZX2SD_GETDIR
+0x000E X CMD_ZX2SD_LS_RELATIVE
+0x000F X CMD_ZX2SD_LS_ABSOLUTE
+0x0010 X CMD_ZX2SD_SCR
+0x0011 X CMD_ZX2SD_Z80_16K
+0x0012 X CMD_ZX2SD_Z80_48K
+0x0013 X CMD_ZX2SD_Z80_128K
+0x0014 X CMD_ZX2SD_SCR_FROM_Z80
+0x0016 X CMD_ZX2SD_SNA_48K
+0x0017 X CMD_ZX2SD_SNA_128K
+0x0018 X CMD_ZX2SD_SCR_FROM_SNA
+0x001E X CMD_ZX2SD_GETINFO
+0x0020   CMD_ZX2SD_TAP
+0x0021 X CMD_ZX2SD_TAP2
+0x0022 X CMD_ZX2SD_TAP_ULA
+0x0023 X CMD_ZX2SD_SCRTAP
+0x0024 X CMD_ZX2SD_TZX
+0x0025 X CMD_ZX2SD_TZX2
+0x0026 X CMD_ZX2SD_TZX_ULA
+0x0028 X CMD_ZX2SD_BINARY_INFO
+0x0029 X CMD_ZX2SD_BINARY_DATA
+0x0030 X CMD_ZX2SD_ROMSETBLK4B
+0x0031 X CMD_ZX2SD_ROMSETBLKSER
+0x00ED X CMD_PC2AR_ROMSET_TUNNEL
+0x00F3 X CMD_PC2AR_ROMSET_TUN2
+0x00EF X CMD_PC2AR_BIN_TUNNEL
+0x0000 X FT_END_DIRECTORY
+0x000C X FT_DIRECTORY
+0x0010 X FT_SCR
+0x0011 X FT_Z80_16K
+0x0012 X FT_Z80_48K
+0x0013 X FT_Z80_128K
+0x0014 X FT_Z80_SCR
+0x0016 X FT_SNA_48K
+0x0017 X FT_SNA_128K
+0x0018 X FT_SNA_SCR
+0x0020 X FT_TAP
+0x0028 X FT_BINARY
+0x0030 X FT_ROMSET
+0x0034 X DANCMD_MULTIPLY
+0x0001 X DANDAT_MULTIPLY
+0x0009 X SNAP_HEADER
+0x000A X SNAP_CHUNK
+0x04D2   Load4bitBlk
+0x04D3   LoopByte
+0x04D3   LoopFor1
+0x04D8 X EndLoopFor1
+0x04DB   LoopFor0
+0x04E0 X EndLoopFor0
+0x04F4   SendDanCMDs
+0x04FC   Send_Ser
+0x0500   SendDanCMDs_Ret1
+0x051B   SendCMD
+0x0505   Send_Ser1
+0x0509   SendDanCMDs_Ret2
+0x050E   SendDanCMDs_Ret3
+0x0519   SendAfterLong
+0x0513   0>pauselong
+0x051B   1>slot_b
+0x0524   3.2>wait_b0
+0x0572   AfterUnlock
+0x05C6   ZX2SD_ASK_TAP
+0x0574   ASK_Ret
+0x057F   AddrOK
+0x0583   AddrToLoad
+0x058B   After1st4bit
+0x05AF   TAP_AfterLoad
+0x0597 X TAP_Load
+0x05A5   After2nd4bit
+0x05B0   TAP_AfterLoadAF
+0x05B7   After1Unlock
+0x05C3   ERRORFLAG
+0x05BF   LOADINGOK
+0x05BD X LOADINGERROR
+0x05CE   ZX2SD_ASK_TAP_RET1
+0x05D7   ZX2SD_ASK_TAP_RET2
+0x05DD   ZX2SD_ASK_TAP_RET3
+0x05E3   ZX2SD_ASK_TAP_RET4
+0x05EA   ZX2SD_ASK_TAP_RET5

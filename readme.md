@@ -32,3 +32,6 @@ jar file for the [Java Romset generator](https://github.com/teiram/dandanator-mi
  https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es_ES
  
  ![cc](cclogo.png)
+ 
+## :small_blue_diamond:Greetings
+ Special greetings to Einar Saukas and Antonio Villena, for the zx7 compressor and small modifies to 48k Spectrum ROM for auto-load version (used for TAP loading)

@@ -1,0 +1,5 @@
+Solo hay que dejar o comentar la 1ª linea:
+        DEFINE  autocarga	;For Autoload ROM
+
+		con eso se genera la rom normal (comentar esa 1ª linea)
+		o la version que autocarga de cinta (sin comentar esa linea)
