@@ -1,10 +1,18 @@
+#include <BlockDriver.h>
+//#include <FreeStack.h>
+#include <MinimumSerial.h>
+#include <SdFat.h>
+#include <SdFatConfig.h>
+#include <sdios.h>
+#include <SysCall.h>
+
 const uint8_t MultiplyVersion[8] = { 'M','U','L','T','v','1','.','1' }  ;  //Version 1.1 for command CMD_ZX2INO_REQ_ID
 
-//#define PinPower_A7           // A7 for VCC_ZX, Comment #define for D9 for Multiply+Dan2.x
-#define pinPower A7             // Number of pin for VCC_ZX, not need to comment this line as it's only used with PinPower_A7 is defined
+//#define PinPower_A7           // A7 for Dan V3, Comment #define for D9 for Multiply+Dan2.x
+#define pinPower A7             // Number of pin for Dan v3, not need to comment this line as it's only used with PinPower_A7 is defined
 
 
-#include <SdFat.h>
+//#include <SdFat.h>
 #include "incCmdsFileTypes.h"
 #include "incDelayDefs.h"
 
