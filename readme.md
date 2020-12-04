@@ -50,6 +50,5 @@ If you are using any part of the code in this repository don''t forget to mentio
  
  Thanks to Bill Greiman for his Arduino SdFat Library. You can get it here: https://github.com/greiman/SdFat
  
- License for SDFAT Copyright © 2012-2018 by William Greiman:
+ Source of sdfat is not distributed with Multiply so you can consult the License for SDFAT Copyright © 2012-2018 by William Greiman in his github page
  
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
