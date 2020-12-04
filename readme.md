@@ -48,7 +48,5 @@ If you are using any part of the code in this repository don''t forget to mentio
 
  Thanks to Antonio Villena for his modification to the original 48KB Spectrum rom allowing a tape auto load on boot
  
- Thanks to Bill Greiman for his Arduino SdFat Library. You can get it here: https://github.com/greiman/SdFat
- 
- Source of sdfat is not distributed with Multiply so you can consult the License for SDFAT Copyright © 2012-2018 by William Greiman in his github page
+ Thanks to Bill Greiman for his Arduino SdFat Library. Source code of sdfat is not distributed with Multiply. SDFat licencing information available at: https://github.com/greiman/SdFat
  
