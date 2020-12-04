@@ -45,4 +45,10 @@ If you are using any part of the code in this repository don''t forget to mentio
 
  Many thanks To Pagantipaco for the graphics and his amazing Menu design. [Link to Retroworks page](http://www.retroworks.es/index.php)
 
+
  Thanks to Antonio Villena for his modification to the original 48KB Spectrum rom allowing a tape auto load on boot
+ 
+ Thanks to Bill Greiman for his Arduino SdFat Library. You can get it here: https://github.com/greiman/SdFat
+ License for SDFAT :
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+Copyright &copy 2012-2018 by William Greiman
