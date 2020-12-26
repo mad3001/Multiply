@@ -11,8 +11,8 @@
   #define maxTotalFiles ((maxChapters+1)*(maxFiles)) //Maximum of files for all chapters
 
   #define FakeIndex 0xFFFF //Fake index number for 1st chapter
-//-------------------------------------------------------------------------------------------------
-void FirstChapterScan(File *Dir, uint8_t *bufp) {
+
+
   #define tChaptersOffset 0x02
   #define tPagesOffset 0x03
   #define tFilesOffset 0x04
@@ -20,6 +20,9 @@ void FirstChapterScan(File *Dir, uint8_t *bufp) {
   #define degraded 0x1C
   #define lowdegrad 0x04
   #define highdegrad 0x08
+
+//-------------------------------------------------------------------------------------------------
+void FirstChapterScan(File *Dir, uint8_t *bufp) {
  
   uint16_t fileCnt = 1; //at least will exists 1 entry: FT_DIRECTORY,".."
   uint8_t chCnt = 1;
@@ -138,8 +141,26 @@ void ListDir(File *Dir, bool s, uint8_t *buf, uint16_t *chapterix) {
       delay(DlyLAUNCHms*2);
       ListChapter(Dir,buf,chapterix);
     }
-    for (i=0;i<msgLen;i++) Send4bit(buf[i+locCH0],Dly4DIRLISTus); // Send last mark of chapter
+    else
+    {
+      delay(DlyLAUNCHms*2);
+        if (*chapterix==0) {
+          buf[locCH0]=FT_DIRECTORY; //1st item is directory
+          buf[locCH0+1]='.'; //1st item is directory
+          buf[locCH0+21]='.'; //1st item is directory
+        }
+      for (i=0;i<msgLen;i++) Send4bit(buf[i+locCH0],Dly4DIRLISTus); // Send last mark of chapter
     //debug(buf+locCH0,msgLen);
+      
+      memset(buf+locCH0,0x00,msgLen); // set final mark as all 0
+          buf[indexOffset+locCH0]=0xFF;
+          buf[indexOffset+1+locCH0]=0xFF;   //Always initalize Chapter 1 with 0xFFFF
+          buf[tChaptersOffset+locCH0]=1; //1 chapter
+          buf[tPagesOffset+locCH0]=1; //1 page
+          buf[tFilesOffset+locCH0]=1; //1 file
+      delay(DlyLAUNCHms*2);
+    }
+    for (i=0;i<msgLen;i++) Send4bit(buf[i+locCH0],Dly4DIRLISTus); // Send last mark of chapter
     
 }
 

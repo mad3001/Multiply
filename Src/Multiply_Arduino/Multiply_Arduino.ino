@@ -8,8 +8,8 @@
 
 const uint8_t MultiplyVersion[8] = { 'M','U','L','T','v','1','.','1' }  ;  //Version 1.1 for command CMD_ZX2INO_REQ_ID
 
-//#define PinPower_A7           // A7 for Dan V3, Comment #define for D9 for Multiply+Dan2.x
-#define pinPower A7             // Number of pin for Dan v3, not need to comment this line as it's only used with PinPower_A7 is defined
+//#define PinPower_A7           // A7 for testing, Comment #define for D9 for Multiply+Dan2.x
+#define pinPower A7             // Number of pin for testing, not need to comment this line as it's only used with PinPower_A7 is defined
 
 
 //#include <SdFat.h>
@@ -53,8 +53,7 @@ void setup() {
   Serial.begin(57600,SERIAL_8N2);
   UCSR0B &= 0xF7; // Deactivate TX  
   InitJoyPassT();
-  if (SD.begin(CS_PIN))
-    SdCardOk = true;  
+  if (SD.begin(CS_PIN)) SdCardOk = true;  
   Init4bit();
   CurDir = SD.open(ROOTDIR, O_READ);
 }
@@ -72,8 +71,8 @@ void debug(uint8_t *b, uint8_t len) {
   Serial.println();
   delay(15);
   UCSR0B &= 0xF7; // Deactivate TX
-}
-*/
+}*/
+
 //-------------------------------------------------------------------------------------------------
 void loop() { 
   #define cmdBufSize 8 //64
@@ -144,7 +143,7 @@ void loop() {
             //delay(DlyLAUNCHms);   // Wait for Spectrum to be ready <-Not required
             if (getBuffer_N(myBuf,2)) {
               index=(uint16_t *)(myBuf);
-              ListDir(&CurDir, true, myBuf, index);
+              ListDir(&CurDir, SdCardOk, myBuf, index);
             }
             break;
     case CMD_ZX2SD_LS_ABSOLUTE:
