@@ -6,7 +6,8 @@
 #include <sdios.h>
 #include <SysCall.h>
 
-const uint8_t MultiplyVersion[8] = { 'M','U','L','T','v','1','.','1' }  ;  //Version 1.1 for command CMD_ZX2INO_REQ_ID
+const uint8_t MultiplyVersion[8] = { 'M','U','L','T','v','1','.','2' }  ;  //Version 1.1 for command CMD_ZX2INO_REQ_ID
+														// Version 1.2 fixed NO SD CARD
 
 //#define PinPower_A7           // A7 for testing, Comment #define for D9 for Multiply+Dan2.x
 #define pinPower A7             // Number of pin for testing, not need to comment this line as it's only used with PinPower_A7 is defined
