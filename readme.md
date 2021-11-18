@@ -33,9 +33,9 @@ Multiply is a team work by Dandare, Mad3001 and OverCLK.
 
 If you are using any part of the code in this repository don''t forget to mention it if you make it public.
 
- LICENSE: CC BY NC SA 4.0
+ LICENSE: CC BY-SA 4.0
  
- https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es_ES
+ https://creativecommons.org/licenses/by-sa/4.0/
  
  ![cc](cc_logo.png)
  
