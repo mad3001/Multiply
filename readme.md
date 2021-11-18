@@ -37,7 +37,7 @@ If you are using any part of the code in this repository don''t forget to mentio
  
  https://creativecommons.org/licenses/by-sa/4.0/
  
- ![cc](cc_logo.png)
+ ![cc](cc_logo_bysa.png)
  
 ## :small_blue_diamond:Acknowledgedments
  
