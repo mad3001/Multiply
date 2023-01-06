@@ -1,10 +1,10 @@
-#include <BlockDriver.h>
+//#include <BlockDriver.h>
 //#include <FreeStack.h>
-#include <MinimumSerial.h>
+//#include <MinimumSerial.h>
 #include <SdFat.h>
-#include <SdFatConfig.h>
-#include <sdios.h>
-#include <SysCall.h>
+//#include <SdFatConfig.h>
+//#include <sdios.h>
+//#include <SysCall.h>
 
 const uint8_t MultiplyVersion[8] = { 'M','U','L','T','v','1','.','2' }  ;  //Version 1.1 for command CMD_ZX2INO_REQ_ID
                             // Version 1.2 fixed NO SD CARD

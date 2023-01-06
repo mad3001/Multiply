@@ -18,10 +18,17 @@ jar file for the [Java Romset generator](https://github.com/teiram/dandanator-mi
  
 ## :small_blue_diamond:Building
  1.Use the Arduino IDE to upload the sketch to the Multiply's Arduino Nano. This process requires the Multiply to be disconnected from the ZX Dandanator! Mini
+
+  Note: sdfat library is required. You can use one of these options:
+  ## :one:sdfat by Bill Greiman
+	version 1.1.4.
+    versions 2.x.x are not supported
+  ## :two:sdfat adafruit fork by Bill Greiman
+    version 1.5.1. This also install SD by arduino, SparkFun version 1.2.4
+    versions 2.x.x are not supported 
  
  2.Use SJASMPlus to create the MLD file containing the navigation menu
 
-  Note: Use sdfat library 1.1.4, newer versions changes some subroutines and will fail to compile the sketch.
 
  
 ## :small_blue_diamond:Executing
