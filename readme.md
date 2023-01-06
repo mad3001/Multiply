@@ -21,6 +21,8 @@ jar file for the [Java Romset generator](https://github.com/teiram/dandanator-mi
  
  2.Use SJASMPlus to create the MLD file containing the navigation menu
 
+  Note: Use sdfat library 1.1.4, newer versions changes some subroutines and will fail to compile the sketch.
+
  
 ## :small_blue_diamond:Executing
  1.Open the "Java Romset generator" and drag your newly built MLD file to the program list
