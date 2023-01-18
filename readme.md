@@ -7,6 +7,11 @@ Addon for [ZX Dandanator! Mini](http://www.dandare.es/Proyectos_Dandare/ZX_Danda
 [Youtube Video Link](https://www.youtube.com/watch?v=IbOcqb44hSs)
 
 ## :small_blue_diamond:Requirements
+Be careful! Important warning if you want to buy multiply or dandanator boards to make your device.
+There are at least two scammers on pcbway who uploaded multiply and dandanator designs WITHOUT ASKING ANY PERMISSION and they take a 10% commission of cost per author when they have created NOTHING. If you buy your pcbs from pcbway you have been ripped off because you have FREE gerbers to order your pcbs wherever you want (jlcpcb, dirtypcbs, etc...).
+We contacted pcbway and so far they have not removed these scammers.
+
+## :small_blue_diamond:Requirements
 Arduino IDE, Sjasmplus or similar Z80 compiler
 
 jar file for the [Java Romset generator](https://github.com/teiram/dandanator-mini.git)
