@@ -40,6 +40,12 @@ jar file for the [Java Romset generator](https://github.com/teiram/dandanator-mi
  1.Open the "Java Romset generator" and drag your newly built MLD file to the program list
  
  2.Connect the Multiply to the ZX Dandanator! Mini and, then, plug the cartridge to the expansion slot of your Spectrum. Once powered on, select "L-Loader" in the Spectrum's Dandanator menu and send your romset using the "Java Romset generator"
+
+## :small_blue_diamond:Compatibility
+ Any ZX Spectrum without Kempston Interface can use Multiply.
+ Known incompatible models:
+ :one: Timex TC2048
+ :two: Inves Plus 48K
  
 ## :small_blue_diamond:License
 
