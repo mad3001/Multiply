@@ -44,7 +44,7 @@ jar file for the [Java Romset generator](https://github.com/teiram/dandanator-mi
 ## :small_blue_diamond:Compatibility
  Any ZX Spectrum without Kempston Interface can use Multiply.
  
- Known incompatible models that include Kempston Mouse internally:
+ Known incompatible models that include Kempston interface internally:
  
  :one: Timex TC2048
  
