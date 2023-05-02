@@ -57,7 +57,7 @@ void FirstChapterScan(File *Dir, uint8_t *bufp) {
           totIndex+= (strlen(nname)+12)/13;
           memcpy(nname1,nname,31);              //Copy first 31 char from nname to nname1
           nname1[31]=0x00;                      //Force last byte as 0x00
-          if(strcmp(nname1,nname2)<0) Sorted++; //If well sorted (nname1<nname2) then add 1 more
+          if(strcmp(nname1,nname2)>=0) Sorted++; //If well sorted (nname1<nname2) then add 1 more
           memcpy(nname2,nname1,32);             //Copy new string as old string
         }
       }
@@ -82,7 +82,7 @@ void FirstChapterScan(File *Dir, uint8_t *bufp) {
           totIndex+= (strlen(nname)+12)/13;
           memcpy(nname1,nname,31);              //Copy first 31 char from nname to nname1
           nname1[31]=0x00;                      //Force last byte as 0x00
-          if(strcmp(nname1,nname2)<0) Sorted++; //If well sorted (nname1<nname2) then add 1 more
+          if(strcmp(nname1,nname2)>=0) Sorted++; //If well sorted (nname1<nname2) then add 1 more
           memcpy(nname2,nname1,32);             //Copy new string as old string
         }
       }
