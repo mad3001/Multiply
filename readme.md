@@ -46,8 +46,10 @@ jar file for the [Java Romset generator](https://github.com/teiram/dandanator-mi
 
 ## :small_blue_diamond:Compatibility
  Any ZX Spectrum without Kempston Interface can use Multiply.
+
+ Warning! As with any old computer from the 8-bit and 16-bit era, never plug in a joystick with the ZX Spectrum switched on!
  
- Known incompatible models that include Kempston interface internally:
+ Known incompatible models (because include a Kempston interface internally):
  
  :one: Timex TC2048
  
