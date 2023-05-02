@@ -6,7 +6,7 @@ Addon for [ZX Dandanator! Mini](http://www.dandare.es/Proyectos_Dandare/ZX_Danda
 
 [Youtube Video Link](https://www.youtube.com/watch?v=IbOcqb44hSs)
 
-## :small_blue_diamond:2-May-2023 Update
+## :small_blue_diamond:2-May-2023 Updated multiply code for arduino nano
 Minor bug fixes. If there are many files in a folder, a message about low sd card performance may be incorrectly displayed.
 
 ## :small_blue_diamond:Be careful!
